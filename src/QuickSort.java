@@ -61,6 +61,7 @@ public class QuickSort {
 		return arr;
 	}
 
+<<<<<<< HEAD
 	public static void main(String[] args) {
 		ArrayList<Integer> temp = CSVreader.readCSV("C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv");
     	ArrayList<Object> test = quickSort(temp);
@@ -70,4 +71,6 @@ public class QuickSort {
     	}
 	}
 
+=======
+>>>>>>> 7076e6d6e03a9c860a480b6c056d127f5eef3018
 }

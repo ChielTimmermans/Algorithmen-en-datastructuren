@@ -84,7 +84,10 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean addAll(int index, Collection<? extends E> collection) {
-        throw new UnsupportedOperationException();
+        for (E element: collection) {
+            add(index++, element);
+        }
+        return true;
     }
 
     @Override
@@ -172,6 +175,7 @@ public class LinkedList<E> implements List<E> {
         Node node = head;
         int index = -1;
         for (int i=0; i<size; i++) {
+            System.out.println(target + "\t" + node.data + "\t" + equals(target, node.data) );
             if (equals(target, node.data)) {
                 index = i;
             }

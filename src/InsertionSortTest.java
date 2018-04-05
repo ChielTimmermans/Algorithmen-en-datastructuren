@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SequentialSearchTest {
+class InsertionSortTest {
 
     protected ArrayList<Integer> list;
     protected String path;
@@ -17,8 +17,18 @@ class SequentialSearchTest {
     }
 
     @Test
-    void contains() {
-        assertTrue(SequentialSearch.contains(list, 10246));
-        assertFalse(SequentialSearch.contains(list, 104679));
+    void insertionSort() {
+        list = InsertionSort.insertionSort(list);
+        assertTrue(isSorted());
+    }
+
+    public boolean isSorted()
+    {
+        boolean sorted = true;
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i-1).compareTo(list.get(i)) > 0) sorted = false;
+        }
+
+        return sorted;
     }
 }

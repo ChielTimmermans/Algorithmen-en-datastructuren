@@ -12,10 +12,13 @@ class StackTest {
 
 
     protected Stack<Integer> list;
+    private String path;
 
     @BeforeEach
     void setUp() {
-    	String path = "C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv";
+        //path = "C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv";
+        path = "C:\\Users\\chiel\\Persoonlijk\\SCHOOL TI STENDEN\\Technische informatica jaar 2\\Periode 3\\Algorithmen en datastructuren\\Eindopdracht\\src\\legosets.csv";
+
         list = new Stack<Integer>();
         ArrayList<Integer> temp = CSVreader.readCSV(path);
         list.pushAll(temp);
