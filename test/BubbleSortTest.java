@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 class BubbleSortTest {
 
@@ -17,5 +18,9 @@ class BubbleSortTest {
     public void isSorted(int arr[])
     {
 
+    }
+
+    @Test
+    void bubbleSort() {
     }
 }
