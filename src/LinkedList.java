@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -98,8 +100,10 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean containsAll(Collection<?> collection) {
-        for (Object obj: collection) {
-            if (!contains(obj)) {
+    	ArrayList<Object> c1 = QuickSort.quickSort(this);
+    	ArrayList<Object> c2 = QuickSort.quickSort(collection);
+        for (Object obj: c2) {
+            if (BinarySearch.binarySearch(c1, obj) == -1) {
                 return false;
             }
         }
