@@ -50,4 +50,8 @@ public class Stack<E> {
             }
         }
 
+        public void clear(){
+            list.clear();
+        }
+
 }

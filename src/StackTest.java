@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,16 +38,28 @@ class StackTest {
     void pop() {
         assertEquals(798, (int)list.pop());
         assertEquals(796, (int)list.pop());
+
+        list.clear();
+
+        assertThrows(EmptyStackException.class, () -> {list.pop();});
     }
+
+
 
     @Test
     void peek() {
         assertEquals(798, (int)list.peek());
         assertEquals(798, (int)list.peek());
+
+
+        list.clear();
+
+        assertThrows(EmptyStackException.class, () -> {list.peek();});
     }
 
     @Test
     void search() {
         assertEquals(1, list.search(798));
+        assertEquals(-1, list.search("Object test"));
     }
 }
