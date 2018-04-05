@@ -44,4 +44,10 @@ public class Stack<E> {
             return index + 1;
         }
 
+        public void pushAll(Collection<? extends E> collection){
+            for (E element: collection) {
+                list.add(0, element);
+            }
+        }
+
 }
