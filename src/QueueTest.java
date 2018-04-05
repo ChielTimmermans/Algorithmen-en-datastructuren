@@ -42,7 +42,7 @@ class QueueTest {
 
     @Test
     void offer() {
-        assertTrue(queue.add(4));
+        assertTrue(queue.offer(4));
     }
 
     @Test
