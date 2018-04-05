@@ -84,10 +84,7 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean addAll(int index, Collection<? extends E> collection) {
-        for (E element: collection) {
-            add(index++, element);
-        }
-        return true;
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -175,7 +172,6 @@ public class LinkedList<E> implements List<E> {
         Node node = head;
         int index = -1;
         for (int i=0; i<size; i++) {
-            System.out.println(target + "\t" + node.data + "\t" + equals(target, node.data) );
             if (equals(target, node.data)) {
                 index = i;
             }
@@ -186,12 +182,14 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public ListIterator<E> listIterator() {
-        return null;
+    	E[] array = (E[]) toArray();
+        return Arrays.asList(array).listIterator();
     }
 
     @Override
     public ListIterator<E> listIterator(int index) {
-        return null;
+    	E[] array = (E[]) toArray();
+        return Arrays.asList(array).listIterator(index);
     }
 
     @Override

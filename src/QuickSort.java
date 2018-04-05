@@ -6,10 +6,10 @@ import java.util.Iterator;
 
 public class QuickSort {
 	
-	public static ArrayList<Object> quickSort(Collection<?> arr) {
+	public static <T extends Collection> T quickSort(Collection<?> arr) {
 		Object[] temp = sort(arr.toArray(), 0, arr.size()-1);
 		arr.clear();
-		return new ArrayList<Object>(Arrays.asList(temp));		
+		return (T) new ArrayList<Object>(Arrays.asList(temp));		
 	}
 	
 	private static Object[] sort(Object[] arr, int links, int rechts) {
@@ -63,7 +63,7 @@ public class QuickSort {
 
 	public static void main(String[] args) {
 		ArrayList<Integer> temp = CSVreader.readCSV("C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv");
-    	ArrayList<Object> test = quickSort(temp);
+    	ArrayList<Integer> test = quickSort(temp);
     	
     	for (int i = 0; i < test.size(); i++) {
     		  System.out.println(test.get(i));   
