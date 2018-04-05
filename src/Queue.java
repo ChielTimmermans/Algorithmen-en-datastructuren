@@ -61,4 +61,8 @@ public class Queue<E> {
         }
         return flag;
     }
+
+    public void clear(){
+        list.clear();
+    }
 }
