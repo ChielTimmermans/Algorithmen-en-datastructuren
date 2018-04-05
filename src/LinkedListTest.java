@@ -89,7 +89,7 @@ class LinkedListTest {
 
     @Test
     void lastIndexOf() {
-        assertEquals(5, list.lastIndexOf("10246"));
+        assertEquals(0, list.lastIndexOf("10246"));
     }
 
     @Test
@@ -102,14 +102,20 @@ class LinkedListTest {
 
     @Test
     void remove() {
+        assertTrue(list.remove((Object) 10247));
+        assertFalse(list.remove((Object) 10247));
     }
 
     @Test
     void remove1() {
+        assertEquals(10247, (int)list.remove(1));
+        assertEquals(10246, (int)list.remove(0));
     }
 
     @Test
     void removeAll() {
+        assertTrue(list.removeAll(list));
+        assertEquals(0, list.size());
     }
 
     @Test
@@ -118,18 +124,30 @@ class LinkedListTest {
 
     @Test
     void set() {
+        assertEquals(10582, (int)list.set(5, 12345));
+        assertEquals(12345, (int)list.set(5, 12346));
     }
 
     @Test
     void size() {
+        assertEquals(6035, list.size());
     }
 
     @Test
     void subList() {
+        list.subList(0, 2);
+        LinkedList<Integer> list2 = new LinkedList<>();
+        list2.add(10246);
+        list2.add(10247);
+        list2.add(10248);
+        for(int i = 0; i > list2.size(); i++){
+            assertEquals(list2.get(i), list);
+        }
     }
 
     @Test
     void toArray() {
+
     }
 
     @Test

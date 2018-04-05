@@ -1,8 +1,4 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * @author downey
@@ -109,6 +105,21 @@ public class LinkedList<E> implements List<E> {
         return true;
     }
 
+    /** Checks whether an element of the array is the target.
+     *
+     * Handles the special case that the target is null.
+     *
+     * @param target
+     * @param element
+     */
+    private boolean equals(Object target, Object element) {
+        if (target == null) {
+            return element == null;
+        } else {
+            return target.equals(element);
+        }
+    }
+
     @Override
     public E get(int index) {
         Node node = getNode(index);
@@ -140,21 +151,6 @@ public class LinkedList<E> implements List<E> {
         return -1;
     }
 
-    /** Checks whether an element of the array is the target.
-     *
-     * Handles the special case that the target is null.
-     *
-     * @param target
-     * @param element
-     */
-    private boolean equals(Object target, Object element) {
-        if (target == null) {
-            return element == null;
-        } else {
-            return target.equals(element);
-        }
-    }
-
     @Override
     public boolean isEmpty() {
         return size == 0;
@@ -171,8 +167,7 @@ public class LinkedList<E> implements List<E> {
         Node node = head;
         int index = -1;
         for (int i=0; i<size; i++) {
-            System.out.println(target + "\t" + node.data + "\t" + equals(target, node.data) );
-            if (equals(target, node.data)) {
+            if (equals(target, node.data.toString())) {
                 index = i;
             }
             node = node.next;
@@ -191,16 +186,6 @@ public class LinkedList<E> implements List<E> {
     }
 
     @Override
-    public boolean remove(Object obj) {
-        int index = indexOf(obj);
-        if (index == -1) {
-            return false;
-        }
-        remove(index);
-        return true;
-    }
-
-    @Override
     public E remove(int index) {
         E element = get(index);
         if (index == 0){
@@ -211,6 +196,16 @@ public class LinkedList<E> implements List<E> {
         }
         size--;
         return element;
+    }
+
+    @Override
+    public boolean remove(Object obj) {
+        int index = indexOf(obj);
+        if (index == -1) {
+            return false;
+        }
+        remove(index);
+        return true;
     }
 
     @Override
