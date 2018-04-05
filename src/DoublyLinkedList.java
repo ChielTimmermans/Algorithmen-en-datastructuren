@@ -1,8 +1,4 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class DoublyLinkedList<E> implements List<E>{
 
@@ -22,6 +18,7 @@ public class DoublyLinkedList<E> implements List<E>{
             this.next = next;
             this.previous = previous;
         }
+
         public String toString() {
             return "Node(" + data.toString() + ")";
         }
@@ -30,24 +27,30 @@ public class DoublyLinkedList<E> implements List<E>{
 
     private int size;            // keeps track of the number of elements
     private Node head;           // reference to the first node
+    private Node tail;
 
     /**
      *
      */
     public DoublyLinkedList() {
         head = null;
+        tail = null;
         size = 0;
     }
 
     @Override
     public boolean add(E element) {
         if (head == null) {
-            head = new Node(element);
+            Node node = new Node(element);
+            head = node;
+            tail = node;
         } else {
             Node node = head;
             // loop until the last node
             for ( ; node.next != null; node = node.next) {}
-            node.next = new Node(element, null, node.next);
+            Node tempNode = new Node(element, null, node);
+            node.next = tempNode;
+            tail = tempNode;
         }
         size++;
         return true;
@@ -57,6 +60,11 @@ public class DoublyLinkedList<E> implements List<E>{
     public void add(int index, E element) {
         if (index == 0){
             head = new Node(element, head, null);
+        } else if(index == size){
+            Node node = tail;
+            Node tempNode = new Node(element, null, node);
+            node.next = tempNode;
+            tail = tempNode;
         } else {
             Node node = getNode(index-1);
             node.next = new Node(element, node.next, node);
@@ -75,7 +83,10 @@ public class DoublyLinkedList<E> implements List<E>{
 
     @Override
     public boolean addAll(int index, Collection<? extends E> collection) {
-        throw new UnsupportedOperationException();
+        for(E element : collection){
+            add(index++, element);
+        }
+        return true;
     }
 
     @Override
@@ -91,8 +102,10 @@ public class DoublyLinkedList<E> implements List<E>{
 
     @Override
     public boolean containsAll(Collection<?> collection) {
-        for (Object obj: collection) {
-            if (!contains(obj)) {
+        ArrayList<Object> c1 = QuickSort.quickSort(this);
+        ArrayList<Object> c2 = QuickSort.quickSort(collection);
+        for (Object obj: c2) {
+            if (BinarySearch.binarySearch(c1, obj) == -1) {
                 return false;
             }
         }
@@ -158,15 +171,14 @@ public class DoublyLinkedList<E> implements List<E>{
 
     @Override
     public int lastIndexOf(Object target) {
-        Node node = head;
-        int index = -1;
-        for (int i=0; i<size; i++) {
-            if (equals(target, node.data)) {
-                index = i;
+        Node node = tail;
+        for (int i = size; i > 0; i--) {
+            if (equals(target, node.data.toString())) {
+                return i-1;
             }
-            node = node.next;
+            node = node.previous;
         }
-        return index;
+        return -1;
     }
 
     @Override
@@ -213,7 +225,8 @@ public class DoublyLinkedList<E> implements List<E>{
 
     @Override
     public boolean retainAll(Collection<?> collection) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(collection);
+        return collection.stream().allMatch(this::contains);
     }
 
     @Override
@@ -234,7 +247,7 @@ public class DoublyLinkedList<E> implements List<E>{
         if (fromIndex < 0 || toIndex >= size || fromIndex > toIndex) {
             throw new IndexOutOfBoundsException();
         }
-        // TODO: classify this and improve it.
+
         int i = 0;
         LinkedList<E> list = new LinkedList<E>();
         for (Node node=head; node != null; node = node.next) {

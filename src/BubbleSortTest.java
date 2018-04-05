@@ -13,12 +13,9 @@ class BubbleSortTest {
 
     @BeforeEach
     void setUp() {
-        path = "C:\\Users\\chiel\\Persoonlijk\\SCHOOL TI STENDEN\\Technische informatica jaar 2\\Periode 3\\Algorithmen en datastructuren\\Eindopdracht\\src\\legosets.csv";
-        list = CSVreader.readCSV(path);
-    }
+        path = "src/legosets.csv";
 
-    @AfterEach
-    void tearDown() {
+        list = CSVreader.readCSV(path);
     }
 
     @Test

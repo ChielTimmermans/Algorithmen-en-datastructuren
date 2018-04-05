@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,12 +44,4 @@ public class CSVreader {
 	    }
 	    return ret;
 	}
-
-    public static void main(String[] args) {
-        ArrayList<Integer> temp = readCSV("C:/Users/frank/Google Drive/AD - Eindopdracht/legosets.csv");
-        
-        for(int i = 0; i<temp.size();i++) {
-        	System.out.println(temp.get(i));
-        }
-    }
 }

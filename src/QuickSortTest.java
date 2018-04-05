@@ -12,7 +12,8 @@ class QuickSortTest {
 
     @BeforeEach
     void setUp() {
-        path = "C:\\Users\\chiel\\Persoonlijk\\SCHOOL TI STENDEN\\Technische informatica jaar 2\\Periode 3\\Algorithmen en datastructuren\\Eindopdracht\\src\\legosets.csv";
+        path = "src/legosets.csv";
+
         list = CSVreader.readCSV(path);
     }
 

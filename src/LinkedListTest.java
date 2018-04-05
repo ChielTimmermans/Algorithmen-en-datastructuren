@@ -7,14 +7,15 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest {
+
     protected LinkedList<Integer> list;
     protected String path;
+
     @BeforeEach
     void setUp() {
         list = new LinkedList<Integer>();
-        //path = "C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv";
-        //path = "C:\\Users\\chiel\\Persoonlijk\\SCHOOL TI STENDEN\\Technische informatica jaar 2\\Periode 3\\Algorithmen en datastructuren\\Eindopdracht\\src\\legosets.csv";
-        path = "C:\\Users\\PChiel\\Desktop\\AD\\src\\legosets.csv";
+        path = "src/legosets.csv";
+
         ArrayList<Integer> temp = CSVreader.readCSV(path);
         list.addAll(temp);
     }
@@ -64,6 +65,17 @@ class LinkedListTest {
         ArrayList<Integer> temp2 = CSVreader.readCSV(path);
 
         assertTrue(list.containsAll(temp2));
+
+
+        ArrayList<Integer> temp3 = CSVreader.readCSV(path);
+        ArrayList<Integer> temp4 = CSVreader.readCSV(path);
+
+        list.clear();
+        list.addAll(temp3);
+
+        temp4.add(2323);
+
+        assertFalse(list.containsAll(temp4));
     }
 
     @Test
@@ -91,6 +103,7 @@ class LinkedListTest {
     @Test
     void lastIndexOf() {
         assertEquals(0, list.lastIndexOf("10246"));
+        assertEquals(-1, list.lastIndexOf(null));
     }
 
     @Test
@@ -144,6 +157,8 @@ class LinkedListTest {
         for(int i = 0; i > list2.size(); i++){
             assertEquals(list2.get(i), list);
         }
+
+        assertThrows(IndexOutOfBoundsException.class, () -> list.subList(5, 2));
     }
 
     @Test

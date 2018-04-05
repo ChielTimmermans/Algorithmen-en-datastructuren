@@ -17,20 +17,17 @@ public class QuickSort {
 		int r = rechts;
 		Object midden = arr[(links+rechts)/2];
 		
-		Comparator<Object> com =new Comparator<Object>() {
-            @Override
-            public int compare(Object o1, Object o2) {
-                if(o1 instanceof Integer && o2 instanceof Integer) {
-                	Integer i1 = (Integer)o1;
-                	Integer i2 = (Integer)o2;
-                	return i1.compareTo(i2);
-                } else if(o1 instanceof String && o2 instanceof String) {
-                	String s1 = (String)o1;
-                	String s2 = (String)o2;
-                	return s1.compareTo(s2);
-                } else {
-                	return o1.toString().compareTo(o2.toString());
-                }
+		Comparator<Object> com = (o1, o2) -> {
+            if(o1 instanceof Integer && o2 instanceof Integer) {
+                Integer i1 = (Integer)o1;
+                Integer i2 = (Integer)o2;
+                return i1.compareTo(i2);
+            } else if(o1 instanceof String && o2 instanceof String) {
+                String s1 = (String)o1;
+                String s2 = (String)o2;
+                return s1.compareTo(s2);
+            } else {
+                return o1.toString().compareTo(o2.toString());
             }
         };
         
@@ -60,14 +57,4 @@ public class QuickSort {
 		}
 		return arr;
 	}
-
-	public static void main(String[] args) {
-		ArrayList<Integer> temp = CSVreader.readCSV("C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv");
-    	ArrayList<Integer> test = quickSort(temp);
-    	
-    	for (int i = 0; i < test.size(); i++) {
-    		  System.out.println(test.get(i));   
-    	}
-	}
-
 }

@@ -4,20 +4,23 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.EmptyStackException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The test class StackTest.
+ *
+ * @author  Michael van Dijk, Henk van Maanen, Frank Tieck, Chiel Timmermans
+ * @version 05042018
+ */
 class StackTest {
-
 
     protected Stack<Integer> list;
     private String path;
 
     @BeforeEach
     void setUp() {
-        //path = "C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv";
-        path = "C:\\Users\\chiel\\Persoonlijk\\SCHOOL TI STENDEN\\Technische informatica jaar 2\\Periode 3\\Algorithmen en datastructuren\\Eindopdracht\\src\\legosets.csv";
+        path = "src/legosets.csv";
 
         list = new Stack<Integer>();
         ArrayList<Integer> temp = CSVreader.readCSV(path);
