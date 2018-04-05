@@ -38,13 +38,4 @@ public class QuickSort {
 		return arr;
 	}
 
-	public static void main(String[] args) {
-		ArrayList<Integer> temp = CSVreader.readCSV("C:/Users/frank/Google Drive/AD - Eindopdracht/legosets.csv");
-    	temp = quickSort(temp);
-    	for(int i = 0; i < temp.size(); i++) {
-    		System.out.println(temp.get(i));
-    	}
-
-	}
-
 }

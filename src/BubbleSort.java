@@ -17,12 +17,4 @@ public class BubbleSort {
         
         return arr;
     }
-    
-    public static void main(String[] args) {
-    	ArrayList<Integer> temp = CSVreader.readCSV("C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv");
-    	temp = bubbleSort(temp);
-    	for(int i = 0; i < temp.size(); i++) {
-    		System.out.println(temp.get(i));
-    	}
-    }
 }
