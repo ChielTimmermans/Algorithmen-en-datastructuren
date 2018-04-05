@@ -1,10 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * @author downey
@@ -84,7 +78,10 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean addAll(int index, Collection<? extends E> collection) {
-        throw new UnsupportedOperationException();
+        for(E element : collection){
+            add(index++, element);
+        }
+        return true;
     }
 
     @Override
@@ -226,7 +223,8 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean retainAll(Collection<?> collection) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(collection);
+        return collection.stream().allMatch(this::contains);
     }
 
     @Override
