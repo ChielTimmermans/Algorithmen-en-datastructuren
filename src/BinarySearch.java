@@ -1,7 +1,12 @@
 import java.util.ArrayList;
 
 public class BinarySearch {
-    public int runBinarySearchRecursively(ArrayList<Integer> arr, int key, int low, int high){
+	
+	public static int binarySearch(ArrayList<Integer> arr, int key) {
+		return runBinarySearchRecursively(arr, key, 0, arr.size());
+	}
+	
+    public static int runBinarySearchRecursively(ArrayList<Integer> arr, int key, int low, int high){
         int middle = (low + high)/2;
 
         if (high < low) {
@@ -17,7 +22,7 @@ public class BinarySearch {
         }
     }
 
-    public int runBinarySearchIteratively(ArrayList<Integer> arr, int key, int low, int high){
+    public static int runBinarySearchIteratively(ArrayList<Integer> arr, int key, int low, int high){
         int index = Integer.MAX_VALUE;
 
         while(low <= high){
@@ -32,5 +37,11 @@ public class BinarySearch {
             }
         }
         return index;
+    }
+    
+    public static void main(String[] args) {
+    	ArrayList<Integer> temp = CSVreader.readCSV("C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv");
+    	System.out.println(binarySearch(temp, (int) 6368));
+    	
     }
 }
