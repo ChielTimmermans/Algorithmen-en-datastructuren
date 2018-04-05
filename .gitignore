@@ -3,3 +3,7 @@ Eindopdracht.iml
 .idea/modules.xml
 .idea/misc.xml
 .idea/workspace.xml
+bin/
+.settings/
+.classpath
+.project
