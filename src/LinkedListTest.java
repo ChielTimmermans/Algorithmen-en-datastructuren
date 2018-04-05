@@ -9,12 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest {
 
-    protected List<Integer> list;
-
+    protected LinkedList<Integer> list;
+    protected String path;
     @BeforeEach
     void setUp() {
-        list = new ArrayList<Integer>();
-        ArrayList<Integer> temp = CSVreader.readCSV("C:\\Users\\chiel\\Persoonlijk\\SCHOOL TI STENDEN\\Technische informatica jaar 2\\Periode 3\\Algorithmen en datastructuren\\Eindopdracht\\src\\legosets.csv");
+        list = new LinkedList<Integer>();
+        path = "C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv";
+        //path = ""C:\\Users\\chiel\\Persoonlijk\\SCHOOL TI STENDEN\\Technische informatica jaar 2\\Periode 3\\Algorithmen en datastructuren\\Eindopdracht\\src\\legosets.csv"";
+        ArrayList<Integer> temp = CSVreader.readCSV(path);
         list.addAll(temp);
     }
 
@@ -24,8 +26,7 @@ class LinkedListTest {
 
     @Test
     void add() {
-        list.add(7);
-        assertEquals(7, (int)list.get(list.size() - 1));
+        assertTrue(list.add(7));
     }
 
     @Test
@@ -40,7 +41,7 @@ class LinkedListTest {
 
     @Test
     void containsAll() {
-        ArrayList<Integer> temp2 = CSVreader.readCSV("C:\\Users\\chiel\\Persoonlijk\\SCHOOL TI STENDEN\\Technische informatica jaar 2\\Periode 3\\Algorithmen en datastructuren\\Eindopdracht\\src\\legosets.csv");
+        ArrayList<Integer> temp2 = CSVreader.readCSV(path);
 
         assertTrue(list.containsAll(temp2));
     }
