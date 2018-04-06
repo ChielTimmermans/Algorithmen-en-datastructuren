@@ -56,4 +56,14 @@ public class QuickSort {
 		}
 		return arr;
 	}
+	
+	public static void main(String[] args) {
+    	String path = "src/legosets.csv";
+    	ArrayList<Integer> list = CSVreader.readCSV(path);
+    	list = quickSort(list);
+    	for(int i = 0; i<list.size();i++) {
+    		System.out.println(list.get(i));
+    	}
+    	
+    }
 }

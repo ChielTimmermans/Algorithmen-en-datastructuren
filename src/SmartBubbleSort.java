@@ -36,9 +36,10 @@ public class SmartBubbleSort{
         	for (int j=1; j<(n-i); j++)
             {
                 if (com.compare(arr[j-1], arr[j]) > 0){
-                	Object temp = arr[j-1];
-                	arr[j] = arr[j-1];
-                	arr[j-1] = temp;
+                	Object temp = arr[j-1]; 
+                	arr[j-1] = arr[j];
+                	arr[j] = temp;
+                	swapped = true;
                 }
             }
             if(!swapped) {
@@ -47,6 +48,16 @@ public class SmartBubbleSort{
         }
 
         return (T) new ArrayList<Object>(Arrays.asList(arr));
+    }
+    
+    public static void main(String[] args) {
+    	String path = "src/legosets.csv";
+    	ArrayList<Integer> list = CSVreader.readCSV(path);
+    	list = smartBubbleSort(list);
+    	for(int i = 0; i<list.size();i++) {
+    		System.out.println(list.get(i));
+    	}
+    	
     }
 
 

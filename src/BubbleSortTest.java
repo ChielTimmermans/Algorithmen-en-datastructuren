@@ -20,7 +20,7 @@ class BubbleSortTest {
 
     @Test
     void bubblesort() {
-        BubbleSort.bubbleSort(list);
+        list = BubbleSort.bubbleSort(list);
         assertTrue(isSorted());
     }
 
