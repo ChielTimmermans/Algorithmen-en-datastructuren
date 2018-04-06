@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +19,11 @@ class StackTest {
      * @param list = een stack gemaakt om de test over uit te voeren
      * @param path = een string met de path naar de csv, of wel onze dataset
      */
-    protected Stack<Integer> stack;
-    private String path;
+    private Stack<Integer> stack;
+
+    StackTest() {
+        stack = new Stack<>();
+    }
 
     /**
      * De setup wordt elke keer uitgevoerd voordat een testfunctie wordt aangeroepen
@@ -30,9 +32,8 @@ class StackTest {
      */
     @BeforeEach
     void setUp() {
-        path = "src/legosets.csv";
+        String path = "src/legosets.csv";
 
-        stack = new Stack<>();
         ArrayList<Integer> temp = CSVreader.readCSV(path);
         stack.pushAll(temp);
     }
@@ -80,7 +81,7 @@ class StackTest {
 
         stack.clear();
 
-        assertThrows(EmptyStackException.class, () -> {stack.pop();});
+        assertThrows(EmptyStackException.class, () -> stack.pop());
     }
 
 
@@ -99,7 +100,7 @@ class StackTest {
 
         stack.clear();
 
-        assertThrows(EmptyStackException.class, () -> {stack.peek();});
+        assertThrows(EmptyStackException.class, () -> stack.peek());
     }
 
     /**

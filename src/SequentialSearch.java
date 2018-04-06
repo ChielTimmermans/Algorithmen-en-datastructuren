@@ -1,16 +1,26 @@
-import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Dit is de SequentialSearch class,
- * deze class is gebaseerd op het Last in First out principe
- * When a stack is first created, it contains no items.
+ * Deze class controleert of een object voor komt in een collectie
  *
  * @author  Michael van Dijk, Henk van Maanen, Frank Tieck, Chiel Timmermans
  * @version 05042018
  */
 
 public class SequentialSearch {
+
+    /**
+     * De sequentialSearch krijgt een collectie binnen,
+     * veranderd deze collectie naar een Object[] d.m.v. de toArray functie
+     * Daarna wordt er over de collectie heen geloopt.
+     * Op het moment dat het huidige obj gelijk staat aan de key dan wordt true gereturned
+     *
+     * @param   col     collection wat gecheckt moet worden of het object er in zit
+     * @param   key     het desbetrevende object
+     * @return  int     0 of hoger. Het item is gevonden en de return is de index van dat item.
+     *          int     -1. Het item is niet gevonden.
+     */
     public static int sequentialSearch(Collection<?> col, Object key){
     	Object[] arr = col.toArray();
         for (int i = 0; i < arr.length; i++){
@@ -19,12 +29,5 @@ public class SequentialSearch {
             }
         }
         return -1;
-    }
-    
-    public static void main(String[] args) {
-    	String path = "src/legosets.csv";
-    	ArrayList<Integer> list = CSVreader.readCSV(path);
-    	System.out.println(list.get(0));
-    	
     }
 }
