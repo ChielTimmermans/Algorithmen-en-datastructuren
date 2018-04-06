@@ -8,16 +8,20 @@ public class BinarySearch {
 		return runBinarySearchRecursively(arr.toArray(), key, 0, arr.size()-1);
 	}
 	
-    public static int runBinarySearchRecursively(Object[] arr, Object key, int low, int high){
+	public static <T extends Object> int binarySearch(T[] arr, T key) {
+		return runBinarySearchRecursively(arr, key, 0, arr.length-1);
+	}
+	
+    public static <T extends Object> int runBinarySearchRecursively(T[] arr, T key, int low, int high){
         int middle = (low + high)/2;
 
         if (high < low) {
             return -1;
         }
         
-        Comparator<Object> com =new Comparator<Object>() {
+        Comparator<T> com =new Comparator<T>() {
             @Override
-            public int compare(Object o1, Object o2) {
+            public int compare(T o1, T o2) {
                 if(o1 instanceof Integer && o2 instanceof Integer) {
                 	Integer i1 = (Integer)o1;
                 	Integer i2 = (Integer)o2;
