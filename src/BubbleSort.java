@@ -28,13 +28,14 @@ public class BubbleSort {
             for (int j=1; j<(n-i); j++)
             {
                 if (com.compare(arr[j-1], arr[j]) > 0){
-                	Object temp = arr[j-1];
-                	arr[j] = arr[j-1];
-                	arr[j-1] = temp;
+                	Object temp = arr[j-1]; 
+                	arr[j-1] = arr[j];
+                	arr[j] = temp;
                 }
             }
         }
         
 		return (T) new ArrayList<Object>(Arrays.asList(arr));
-    }
+    }    
+    
 }

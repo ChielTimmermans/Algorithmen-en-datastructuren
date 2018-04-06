@@ -77,9 +77,10 @@ public class SmartBubbleSort{
                 if (com.compare(arr[j-1], arr[j]) > 0){
                     
                     //hier vindt de swap plaats als item o1 groter is dan o2
-                	Object temp = arr[j-1];
-                	arr[j] = arr[j-1];
-                	arr[j-1] = temp;
+                	Object temp = arr[j-1]; 
+                	arr[j-1] = arr[j];
+                	arr[j] = temp;
+                	swapped = true;
                 }
             }
             if(!swapped) {
@@ -88,6 +89,16 @@ public class SmartBubbleSort{
         }
 
         return (T) new ArrayList<Object>(Arrays.asList(arr));
+    }
+    
+    public static void main(String[] args) {
+    	String path = "src/legosets.csv";
+    	ArrayList<Integer> list = CSVreader.readCSV(path);
+    	list = smartBubbleSort(list);
+    	for(int i = 0; i<list.size();i++) {
+    		System.out.println(list.get(i));
+    	}
+    	
     }
 
 
