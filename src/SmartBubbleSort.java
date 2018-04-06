@@ -4,8 +4,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class SmartBubbleSort {
-
+/**
+ * Dit is de SmartBubbleSort class,
+ * dit sorting algorithm is gebaseerd op BubbleSort,
+ * Het verschil alleen is dat dit algorithm eerst checkt of het willekeurige object type al gesorteerd is,
+ * voordat hij daadwerkelijk het object gaat swappen
+ */
+public class SmartBubbleSort{
 
     public static <T extends Collection> T smartBubbleSort(Collection<?> col){
         int n = col.size();

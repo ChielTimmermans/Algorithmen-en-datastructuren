@@ -183,12 +183,14 @@ public class DoublyLinkedList<E> implements List<E>{
 
     @Override
     public ListIterator<E> listIterator() {
-        return null;
+        E[] array = (E[]) toArray();
+        return Arrays.asList(array).listIterator();
     }
 
     @Override
     public ListIterator<E> listIterator(int index) {
-        return null;
+        E[] array = (E[]) toArray();
+        return Arrays.asList(array).listIterator(index);
     }
 
     @Override

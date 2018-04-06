@@ -118,6 +118,8 @@ class LinkedListTest {
     void remove() {
         assertTrue(list.remove((Object) 10247));
         assertFalse(list.remove((Object) 10247));
+
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
     }
 
     @Test
