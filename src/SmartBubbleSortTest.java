@@ -36,10 +36,15 @@ class SmartBubbleSortTest {
     @Test
     /**
      * Deze test kijkt of de functie smartBubbleSort goed functioneerd.
-     * Eerst wordt de list geso
+     * Eerst wordt getest of de lijst gesort is, door middel van de isSorted functie, dit is niet waar en zal daarom false returnen.
+     * Daarna wordt de list gesorteerd en wordt de isSorted functie aangeroepen, deze zal true moeten returnen als de lisjt gesort is.
      *
+     * Daarna wordt dezelfde lijst nog een keer gesort,
+     * dit gebeurt om te kijken of het algorithm daadwerkelijk checkt of de lijst al gesorteerd is en dus sneller klaar is.
      */
     void smartBubbleSort() {
+        assertFalse(isSorted(list));
+
         list = SmartBubbleSort.smartBubbleSort(list);
         assertTrue(isSorted(list));
 
@@ -47,13 +52,20 @@ class SmartBubbleSortTest {
         assertTrue(isSorted(list));
     }
 
+    /**
+     * Deze functie checkt of een ArrayList gesort is,
+     * De boolean sorted word false gezet op het moment dat 2 items niet op volgorde zijn
+     *
+     *
+     * @param list
+     * @return boolean return true als het object gesort is.
+     */
     public boolean isSorted(ArrayList<Integer> list)
     {
-        boolean sorted = true;
         for (int i = 1; i < list.size(); i++) {
-            if (list.get(i-1).compareTo(list.get(i)) > 0) sorted = false;
+            if (list.get(i-1).compareTo(list.get(i)) > 0) return false;
         }
 
-        return sorted;
+        return true;
     }
 }

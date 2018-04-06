@@ -3,10 +3,13 @@ import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
 /**
-* Dit is de Stack class,
-* deze class is gebaseerd op het Last in First out principe
-* When a stack is first created, it contains no items.
-*/
+ * Dit is de Stack class,
+ * deze class is gebaseerd op het Last in First out principe
+ * When a stack is first created, it contains no items.
+ *
+ * @author  Michael van Dijk, Henk van Maanen, Frank Tieck, Chiel Timmermans
+ * @version 05042018
+ */
 public class Stack<E> {
 
     //De stack wordt opgeslagen in een linkedlist
@@ -20,10 +23,10 @@ public class Stack<E> {
     }
 
     /**
-    * Tests if this stack is empty.
-    *
-    * @return boolean true if and only if this stack contains no items; false otherwise.
-    */
+     * Tests if this stack is empty.
+     *
+     * @return boolean true if and only if this stack contains no items; false otherwise.
+     */
     public boolean empty() {
         return stack.isEmpty();
     }
@@ -92,9 +95,9 @@ public class Stack<E> {
     }
 
     /**
-    * empties the stack
-    *
-    *
+     * empties the stack
+     *
+     *
      */
     public void clear(){
         stack.clear();
