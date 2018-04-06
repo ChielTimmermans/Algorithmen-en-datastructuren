@@ -2,7 +2,7 @@ import java.util.Collection;
 
 /**
  * Dit is de SequentialSearch class,
- * Deze class controleert of een object voor komt in een collectie
+ * Deze class controleert of een object voorkomt in een collectie
  *
  * @author  Michael van Dijk, Henk van Maanen, Frank Tieck, Chiel Timmermans
  * @version 05042018
