@@ -24,7 +24,7 @@ class StackTest {
     private String path;
 
     /**
-     * De setup wordt elke keer uitgevoerd voor dat een testfunctie wordt aangeroepen
+     * De setup wordt elke keer uitgevoerd voordat een testfunctie wordt aangeroepen
      * In deze setup wordt de data set opgehaald en wordt het omgezet naar een Stack
      *
      */
