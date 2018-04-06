@@ -21,8 +21,11 @@ public class SequentialSearch {
      * @return  int     0 of hoger. Het item is gevonden en de return is de index van dat item.
      *          int     -1. Het item is niet gevonden.
      */
-    public static int sequentialSearch(Collection<?> col, Object key){
-    	Object[] arr = col.toArray();
+	public static int sequentialSearch(Collection<?> arr, Object key){
+        return sequentialSearch(arr.toArray(), key);
+    }
+	
+    public static <T extends Object> int sequentialSearch(T[] arr, Object key){
         for (int i = 0; i < arr.length; i++){
             if (arr[i].equals(key)){
                 return i;
@@ -30,4 +33,5 @@ public class SequentialSearch {
         }
         return -1;
     }
+    
 }

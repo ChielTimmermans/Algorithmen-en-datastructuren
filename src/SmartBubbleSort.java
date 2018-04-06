@@ -25,16 +25,20 @@ import java.util.Comparator;
  * @version 05042018
  */
 public class SmartBubbleSort{
+	
+	public static <E extends Object, T extends Collection<E>> T smartBubbleSort(Collection<E> arr) {
+		return (T) new ArrayList<Object>(Arrays.asList(smartBubbleSort(arr.toArray())));
+	}
 
-    public static <T extends Collection> T smartBubbleSort(Collection<?> col){
+    public static <T extends Object> T[] smartBubbleSort(T[] arr){
         //lengte van Willekeurige Object type
-        int n = col.size();
-        //willekeurige Object wordt omgezet naar een Array;
-        Object[] arr = col.toArray();
+        int n = arr.length;
 
         //hier wordt de COmparator gezet,
         //dit wordt gedaan op basis van de datatype van de items in de objecttype
-        Comparator<Object> com = (o1, o2) -> {
+        Comparator<T> com =new Comparator<T>() {
+            @Override
+            public int compare(T o1, T o2) {
             /*
              * checkt of o1 en o2 integers zijn,
              * als dit waar is dan returned hij de vergelijking tussen o1 en o2
@@ -52,16 +56,17 @@ public class SmartBubbleSort{
              * Er is voor deze methode gekozen omdat het algorithm generic is en daarom op elke datatype moet werken.
              * Daarnaast is hij ook makkelijk uitbreidbaar als je je eigen compare functie wil toevoegen
              */
-            if(o1 instanceof Integer && o2 instanceof Integer) {
-                Integer i1 = (Integer)o1;
-                Integer i2 = (Integer)o2;
-                return i1.compareTo(i2);
-            } else if(o1 instanceof String && o2 instanceof String) {
-                String s1 = (String)o1;
-                String s2 = (String)o2;
-                return s1.compareTo(s2);
-            } else {
-                return o1.toString().compareTo(o2.toString());
+            	if(o1 instanceof Integer && o2 instanceof Integer) {
+                	Integer i1 = (Integer)o1;
+                	Integer i2 = (Integer)o2;
+                	return i1.compareTo(i2);
+                } else if(o1 instanceof String && o2 instanceof String) {
+                	String s1 = (String)o1;
+                	String s2 = (String)o2;
+                	return s1.compareTo(s2);
+                } else {
+                	return o1.toString().compareTo(o2.toString());
+                }
             }
         };
 
@@ -82,7 +87,7 @@ public class SmartBubbleSort{
                 if (com.compare(arr[j-1], arr[j]) > 0){
 
                     // hier vindt de swap plaats als item o1 groter is dan o2
-                	Object temp = arr[j-1]; 
+                	T temp = arr[j-1]; 
                 	arr[j-1] = arr[j];
                 	arr[j] = temp;
 
@@ -94,12 +99,12 @@ public class SmartBubbleSort{
             // als er geen swap heeft plaatst gevonden, ofwel swapped = false,
             // dan betekend dat het object al gesort is en kan deze dus gereturned worden
             if(!swapped) {
-            	return (T) new ArrayList<>(Arrays.asList(arr));
+            	return arr;
             }
 
 
         }
         //Als het object gesort is dan wordt hij gereturned als een ArrayList.
-        return (T) new ArrayList<>(Arrays.asList(arr));
+        return arr;
     }
 }
