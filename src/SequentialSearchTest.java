@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +19,9 @@ class SequentialSearchTest {
     }
 
     @Test
-    void contains() {
-        assertTrue(SequentialSearch.sequentialSearch(list, 10246));
-        assertFalse(SequentialSearch.sequentialSearch(list, 104679));
+    void sequentialSearch() {
+        assertEquals(0, SequentialSearch.sequentialSearch(list, 10246));
+        assertNotEquals(0, SequentialSearch.sequentialSearch(list, 10243));
+        assertEquals(-1, SequentialSearch.sequentialSearch(list, "test"));
     }
 }

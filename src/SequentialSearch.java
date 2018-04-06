@@ -11,13 +11,20 @@ import java.util.Collection;
  */
 
 public class SequentialSearch {
-    public static boolean sequentialSearch(Collection<?> col, Object key){
+    public static int sequentialSearch(Collection<?> col, Object key){
     	Object[] arr = col.toArray();
         for (int i = 0; i < arr.length; i++){
             if (arr[i].equals(key)){
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
+    }
+    
+    public static void main(String[] args) {
+    	String path = "src/legosets.csv";
+    	ArrayList<Integer> list = CSVreader.readCSV(path);
+    	System.out.println(list.get(0));
+    	
     }
 }
