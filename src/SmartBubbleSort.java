@@ -1,8 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SmartBubbleSort {
-
+/**
+ * Dit is de SmartBubbleSort class,
+ * dit sorting algorithm is gebaseerd op BubbleSort,
+ * Het verschil alleen is dat dit algorithm eerst checkt of het willekeurige object type al gesorteerd is,
+ * voordat hij daadwerkelijk het object gaat swappen
+ */
+public class SmartBubbleSort{
 
     public static ArrayList<Integer> smartBubbleSort(ArrayList<Integer> arr){
         int n = arr.size();
