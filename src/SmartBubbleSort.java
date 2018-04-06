@@ -63,43 +63,41 @@ public class SmartBubbleSort{
             }
         };
 
-        //Met deze boolean kan gekeken worden of er een swap heeft plaats gevonden
-        //en dus controleren of het algorithem al gesort is.
-        boolean swapped = false;
+        // Met deze boolean kan gekeken worden of er een swap heeft plaats gevonden
+        // en dus controleren of het algorithem al gesort is.
 
-        //dit is de geneste loop waar het algorithm door heen loopt om het object te sorteren
-        //in de binneste loop kun je zien dat na elke iteration er 1 minder item wordt gecheckt.
+        boolean swapped;
+        // Dit is de geneste loop waar het algorithm door heen loopt om het object te sorteren
+        // in de binneste loop kun je zien dat na elke iteration er 1 minder item wordt gecheckt.
         for (int i=0; i < n; i++)
         {
+            // Na elke iteration wordt de boolean swapped weer op false gezet zodat deze iteration opnieuw gecheckt kan worden of hij al op volgorde is
+            swapped = false;
+
         	for (int j=1; j<(n-i); j++)
             {
-                //hier wordt de compare functie toegepast die hierboven staat uitgelegd
+                // hier wordt de compare functie toegepast die hierboven staat uitgelegd
                 if (com.compare(arr[j-1], arr[j]) > 0){
-                    
-                    //hier vindt de swap plaats als item o1 groter is dan o2
+
+                    // hier vindt de swap plaats als item o1 groter is dan o2
                 	Object temp = arr[j-1]; 
                 	arr[j-1] = arr[j];
                 	arr[j] = temp;
+
+                	// als item o1 groter is dan o2 dan vindt er een swap plaats,
+                    // Doordat deze boolean nu op true wordt gezet kan er later gekeken worden of het algortihm al gesort is.
                 	swapped = true;
                 }
             }
+            // als er geen swap heeft plaatst gevonden, ofwel swapped = false,
+            // dan betekend dat het object al gesort is en kan deze dus gereturned worden
             if(!swapped) {
             	return (T) new ArrayList<Object>(Arrays.asList(arr));
             }
-        }
 
+
+        }
+        //Als het object gesort is dan wordt hij gereturned als een ArrayList.
         return (T) new ArrayList<Object>(Arrays.asList(arr));
     }
-    
-    public static void main(String[] args) {
-    	String path = "src/legosets.csv";
-    	ArrayList<Integer> list = CSVreader.readCSV(path);
-    	list = smartBubbleSort(list);
-    	for(int i = 0; i<list.size();i++) {
-    		System.out.println(list.get(i));
-    	}
-    	
-    }
-
-
 }
