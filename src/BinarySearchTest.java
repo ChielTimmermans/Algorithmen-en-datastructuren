@@ -15,7 +15,7 @@ class BinarySearchTest {
     void setUp() {
         path = "src/legosets.csv";
 
-        list = QuickSort.quickSort(CSVreader.readCSV(path));
+        list = CSVreader.readCSV(path);
     }
 	
 	@Test
@@ -34,8 +34,8 @@ class BinarySearchTest {
 
     @Test
     void runBinarySearchIteratively() {
-    	assertEquals(4574, BinarySearch.runBinarySearchIteratively(list.toArray(), 10243, 0, list.size()-1));
-	    assertNotEquals(4574, BinarySearch.runBinarySearchIteratively(list.toArray(), 10246, 0, list.size()-1));
-	    assertEquals(-1, BinarySearch.runBinarySearchIteratively(list.toArray(), "tets", 0, list.size()-1));
+    	assertEquals(4574, BinarySearch.runBinarySearchIteratively(list.toArray(), 10243));
+	    assertNotEquals(4574, BinarySearch.runBinarySearchIteratively(list.toArray(), 10246));
+	    assertEquals(-1, BinarySearch.runBinarySearchIteratively(list.toArray(), "test"));
     }
 }
