@@ -21,6 +21,9 @@ import java.util.Comparator;
  *
  * In de eerste iteration wordt er ook gekeken of het algorithm al gesorteerd is.
  * Zo ja dan returned hij het object meteen
+ *
+ * @author  Michael van Dijk, Henk van Maanen, Frank Tieck, Chiel Timmermans
+ * @version 05042018
  */
 public class SmartBubbleSort{
 
@@ -34,22 +37,22 @@ public class SmartBubbleSort{
         //dit wordt gedaan op basis van de datatype van de items in de objecttype
         Comparator<Object> com = (o1, o2) -> {
             /**
-            * checkt of o1 en o2 integers zijn,
-            * als dit waar is dan returned hij de vergelijking tussen o1 en o2
-            * de compareTo() functie returned -1, 0 of 1.
-            * -1 als o1 kleiner is dan o2
-            * 0 als o1 gelijk staat aan o2
-            * 1 als o1 groter is dan o2
-            *
-            * Dit geld ook voor de tweede en derde else statement.
-            * Alleen wordt bij de tweede gecheckt of de items Strings zijn,
-            * zo ja dan wordt het op alfabetische volgorde gesort.
-            *
-            * Bij de derde statement wordt alles gezet wat geen Integer of String is
-            * Hier wordt dan de toString functie over aangeroepen, dit wordt daarna vergeleken met elkaar
-            * Er is voor deze methode gekozen omdat het algorithm generic is en daarom op elke datatype moet werken.
-            * Daarnaast is hij ook makkelijk uitbreidbaar als je je eigen compare functie wil toevoegen
-            */
+             * checkt of o1 en o2 integers zijn,
+             * als dit waar is dan returned hij de vergelijking tussen o1 en o2
+             * de compareTo() functie returned -1, 0 of 1.
+             * -1 als o1 kleiner is dan o2
+             * 0 als o1 gelijk staat aan o2
+             * 1 als o1 groter is dan o2
+             *
+             * Dit geld ook voor de tweede en derde else statement.
+             * Alleen wordt bij de tweede gecheckt of de items Strings zijn,
+             * zo ja dan wordt het op alfabetische volgorde gesort.
+             *
+             * Bij de derde statement wordt alles gezet wat geen Integer of String is
+             * Hier wordt dan de toString functie over aangeroepen, dit wordt daarna vergeleken met elkaar
+             * Er is voor deze methode gekozen omdat het algorithm generic is en daarom op elke datatype moet werken.
+             * Daarnaast is hij ook makkelijk uitbreidbaar als je je eigen compare functie wil toevoegen
+             */
             if(o1 instanceof Integer && o2 instanceof Integer) {
                 Integer i1 = (Integer)o1;
                 Integer i2 = (Integer)o2;
