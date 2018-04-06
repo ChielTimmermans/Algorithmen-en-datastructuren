@@ -45,7 +45,7 @@ public class Stack<E> {
      * Removes the object at the top of this stack and returns that object as the value of this function.
      *
      * @return  E   The object at the top of this stack (the last item of the Vector object
-     * @throws  EmptyStackException - if this stack is empty.
+     * @throw  EmptyStackException - if this stack is empty.
      */
     public E pop(){
         if(stack.isEmpty()){

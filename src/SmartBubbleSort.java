@@ -18,8 +18,8 @@ import java.util.Comparator;
  * Daarna begint hij weer helemaal van voren,
  * na elke iteration hoeft er 1 element minder te worden vergeleken.
  *
- * In de eerste iteration wordt er ook gekeken of het algorithm al gesorteerd is.
- * Zo ja dan returned hij het object meteen
+ * In de elke iteration wordt er ook gekeken of het algorithm al gesorteerd is.
+ * Zo ja dan returned hij het object meteen.
  *
  * @author  Michael van Dijk, Henk van Maanen, Frank Tieck, Chiel Timmermans
  * @version 05042018
@@ -34,7 +34,7 @@ public class SmartBubbleSort{
         //lengte van Willekeurige Object type
         int n = arr.length;
 
-        //hier wordt de COmparator gezet,
+        //hier wordt de Comparator gezet,
         //dit wordt gedaan op basis van de datatype van de items in de objecttype
         Comparator<T> com =new Comparator<T>() {
             @Override
