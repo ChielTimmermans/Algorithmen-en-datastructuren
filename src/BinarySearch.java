@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class BinarySearch {
 	
 	public static int binarySearch(Collection<?> arr, Object key) {
-		return runBinarySearchRecursively(arr.toArray(), key, 0, arr.size());
+		return runBinarySearchRecursively(arr.toArray(), key, 0, arr.size()-1);
 	}
 	
     public static int runBinarySearchRecursively(Object[] arr, Object key, int low, int high){
@@ -41,16 +41,33 @@ public class BinarySearch {
         }
     }
 
-    public static int runBinarySearchIteratively(ArrayList<Integer> arr, int key, int low, int high){
+    public static int runBinarySearchIteratively(Object[] arr, Object key, int low, int high){
         int index = Integer.MAX_VALUE;
+        
+        Comparator<Object> com =new Comparator<Object>() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                if(o1 instanceof Integer && o2 instanceof Integer) {
+                	Integer i1 = (Integer)o1;
+                	Integer i2 = (Integer)o2;
+                	return i1.compareTo(i2);
+                } else if(o1 instanceof String && o2 instanceof String) {
+                	String s1 = (String)o1;
+                	String s2 = (String)o2;
+                	return s1.compareTo(s2);
+                } else {
+                	return o1.toString().compareTo(o2.toString());
+                }
+            }
+        };
 
         while(low <= high){
             int mid = (low + high)/2;
-            if (arr.get(mid) < key){
+            if (com.compare(arr[mid], key) <0){
                 low = mid+1;
-            } else if (arr.get(mid) > key){
+            } else if (com.compare(arr[mid], key) > 0){
                 high = mid-1;
-            }else if (arr.get(mid) == key){
+            }else if (com.compare(arr[mid], key) == 0){
                 index = mid;
                 break;
             }
@@ -59,13 +76,14 @@ public class BinarySearch {
     }
     
     public static void main(String[] args) {
-    	ArrayList<Integer> temp = CSVreader.readCSV("C:/Users/frank/workspace/ADEindopdracht/src/legosets.csv");
-    	ArrayList<Object> test = QuickSort.quickSort(temp);
-    	for(int i = 0; i < test.size(); i++) {
-    		System.out.println(test.get(i));
+    	String path = "src/legosets.csv";
+
+    	ArrayList<Integer> list = CSVreader.readCSV(path);
+    	list = QuickSort.quickSort(list);
+    	for(int i = 0; i < list.size(); i++) {
+    		System.out.println(list.get(i));
     	}
-    	System.out.println(binarySearch(test, (int) 10243));
-    	System.out.println(test.get(5988));
+    	System.out.println(binarySearch(list, 10243));
     	
     }
 }

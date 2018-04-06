@@ -19,7 +19,7 @@ class SequentialSearchTest {
 
     @Test
     void contains() {
-        assertTrue(SequentialSearch.contains(list, 10246));
-        assertFalse(SequentialSearch.contains(list, 104679));
+        assertTrue(SequentialSearch.sequentialSearch(list, 10246));
+        assertFalse(SequentialSearch.sequentialSearch(list, 104679));
     }
 }
