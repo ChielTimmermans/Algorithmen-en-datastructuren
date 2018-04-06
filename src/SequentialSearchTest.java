@@ -35,12 +35,14 @@ class SequentialSearchTest {
 
     /**
      * Deze test kijkt of de functie contains goed functioneerd.
-     * Eerst wordt een object gezocht die in de dataset zit, dit zal true moeten returnen.
-     * Daarna wordt een object gezocht die niet in
+     * Eerst wordt een object gezocht die in de dataset zit, dit zal de index moeten returnen, wat 0 is.
+     * Daarna wordt een object gezocht die ook in de dataset zit, dit zal de index returnen, maar zal niet gelijk zijn aangezien de index anders is.
+     * Tot slot wordt een object gezocht die niet in bestaat. Dit zal -1 returnen.
      */
     @Test
-    void contains() {
-        assertTrue(SequentialSearch.sequentialSearch(list, 10246));
-        assertFalse(SequentialSearch.sequentialSearch(list, 104679));
+    void sequentialSearch() {
+        assertEquals(0, SequentialSearch.sequentialSearch(list, 10246));
+        assertNotEquals(0, SequentialSearch.sequentialSearch(list, 10243));
+        assertEquals(-1, SequentialSearch.sequentialSearch(list, "test"));
     }
 }

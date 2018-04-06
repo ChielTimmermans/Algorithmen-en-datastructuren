@@ -42,7 +42,7 @@ public class BinarySearch {
     }
 
     public static int runBinarySearchIteratively(Object[] arr, Object key, int low, int high){
-        int index = Integer.MAX_VALUE;
+        int index = -1;
         
         Comparator<Object> com =new Comparator<Object>() {
             @Override

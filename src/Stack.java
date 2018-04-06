@@ -1,6 +1,5 @@
 import java.util.Collection;
 import java.util.EmptyStackException;
-import java.util.NoSuchElementException;
 
 /**
  * Dit is de Stack class,
@@ -34,7 +33,7 @@ public class Stack<E> {
     /**
      * Pushes an item onto the top of this stack.
      *
-     * @param   E   item - the item to be pushed onto this stack
+     * @param   item - the item to be pushed onto this stack
      * @return  E   the item argument.
      */
     public E push(E item){
@@ -67,8 +66,7 @@ public class Stack<E> {
         if(stack.isEmpty()){
             throw new EmptyStackException();
         }
-        E temp = stack.get(0);
-        return temp;
+        return stack.get(0);
     }
 
     /**

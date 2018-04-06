@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 
 /**
@@ -36,7 +35,7 @@ public class SmartBubbleSort{
         //hier wordt de COmparator gezet,
         //dit wordt gedaan op basis van de datatype van de items in de objecttype
         Comparator<Object> com = (o1, o2) -> {
-            /**
+            /*
              * checkt of o1 en o2 integers zijn,
              * als dit waar is dan returned hij de vergelijking tussen o1 en o2
              * de compareTo() functie returned -1, 0 of 1.
@@ -95,12 +94,12 @@ public class SmartBubbleSort{
             // als er geen swap heeft plaatst gevonden, ofwel swapped = false,
             // dan betekend dat het object al gesort is en kan deze dus gereturned worden
             if(!swapped) {
-            	return (T) new ArrayList<Object>(Arrays.asList(arr));
+            	return (T) new ArrayList<>(Arrays.asList(arr));
             }
 
 
         }
         //Als het object gesort is dan wordt hij gereturned als een ArrayList.
-        return (T) new ArrayList<Object>(Arrays.asList(arr));
+        return (T) new ArrayList<>(Arrays.asList(arr));
     }
 }

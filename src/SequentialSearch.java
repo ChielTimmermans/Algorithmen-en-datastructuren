@@ -16,16 +16,18 @@ public class SequentialSearch {
      * Daarna wordt er over de collectie heen geloopt.
      * Op het moment dat het huidige obj gelijk staat aan de key dan wordt true gereturned
      *
-     * @param col collection wat gecheckt moet worden of het object er in zit
-     * @param key het desbetrevende object
-     * @return  true als het item in de list bestaat,
-     *          false als het item niet in de list bestaat
+     * @param   col     collection wat gecheckt moet worden of het object er in zit
+     * @param   key     het desbetrevende object
+     * @return  int     0 of hoger. Het item is gevonden en de return is de index van dat item.
+     *          int     -1. Het item is niet gevonden.
      */
-    public static boolean sequentialSearch(Collection<?> col, Object key){
+    public static int sequentialSearch(Collection<?> col, Object key){
     	Object[] arr = col.toArray();
-        for(Object object: arr){
-            if(object.equals(key)) return true;
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i].equals(key)){
+                return i;
+            }
         }
-        return false;
+        return -1;
     }
 }
