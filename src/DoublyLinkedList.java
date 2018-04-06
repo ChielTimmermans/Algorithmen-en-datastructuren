@@ -102,8 +102,8 @@ public class DoublyLinkedList<E> implements List<E>{
 
     @Override
     public boolean containsAll(Collection<?> collection) {
-        ArrayList<Object> c1 = QuickSort.quickSort(this);
-        ArrayList<Object> c2 = QuickSort.quickSort(collection);
+        ArrayList<E> c1 = QuickSort.quickSort(this);
+        ArrayList<Object> c2 = (ArrayList<Object>) QuickSort.quickSort(collection);
         for (Object obj: c2) {
             if (BinarySearch.binarySearch(c1, obj) == -1) {
                 return false;

@@ -4,21 +4,28 @@ import java.util.Collection;
 import java.util.Comparator;
 
 public class InsertionSort {
-    public static <T extends Collection> T insertionSort(Collection<?> col) {
-        Object temp;
-        Object[] arr = col.toArray();
+	
+	public static <E extends Object, T extends Collection<E>> T insertionSort(Collection<E> arr) {
+		return (T) new ArrayList<Object>(Arrays.asList(insertionSort(arr.toArray())));
+	}
+	
+    public static <T extends Object> T[] insertionSort(T[] arr) {
+        T temp;
         
-        Comparator<Object> com = (o1, o2) -> {
-            if(o1 instanceof Integer && o2 instanceof Integer) {
-                Integer i1 = (Integer)o1;
-                Integer i2 = (Integer)o2;
-                return i1.compareTo(i2);
-            } else if(o1 instanceof String && o2 instanceof String) {
-                String s1 = (String)o1;
-                String s2 = (String)o2;
-                return s1.compareTo(s2);
-            } else {
-                return o1.toString().compareTo(o2.toString());
+        Comparator<T> com =new Comparator<T>() {
+            @Override
+            public int compare(T o1, T o2) {
+                if(o1 instanceof Integer && o2 instanceof Integer) {
+                	Integer i1 = (Integer)o1;
+                	Integer i2 = (Integer)o2;
+                	return i1.compareTo(i2);
+                } else if(o1 instanceof String && o2 instanceof String) {
+                	String s1 = (String)o1;
+                	String s2 = (String)o2;
+                	return s1.compareTo(s2);
+                } else {
+                	return o1.toString().compareTo(o2.toString());
+                }
             }
         };
         
@@ -30,6 +37,6 @@ public class InsertionSort {
             }
             arr[i] = temp;
         }
-        return (T) new ArrayList<Object>(Arrays.asList(arr));
+        return arr;
     }
 }
