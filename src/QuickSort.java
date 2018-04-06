@@ -8,7 +8,6 @@ public class QuickSort {
 	
 	public static <T extends Collection> T quickSort(Collection<?> arr) {
 		Object[] temp = sort(arr.toArray(), 0, arr.size()-1);
-		arr.clear();
 		return (T) new ArrayList<Object>(Arrays.asList(temp));		
 	}
 	
