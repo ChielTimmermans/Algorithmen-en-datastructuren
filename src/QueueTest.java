@@ -95,12 +95,12 @@ class QueueTest {
     }
 
     /**
-     * Deze test kijkt of de functie peek goed functioneerd.
+  e   * Deze test kijkt of de functie peek goed functioneerd.
      *
      * Eerst vraagt de queue een element op met de functie poll(),
      * dit returned het oudste element en verwijderd het element.
      * Daarna wordt de functie element nog een keer gecalled om te bewijzen dat de item verwijderd wordt
-     * Tot slot wordt de queue geleegd en wordt opnieuw de functie poll() uitgevoerd.
+     * Tot slot wordt de queu geleegd en wordt opnieuw de functie poll() uitgevoerd.
      * Nu zal er een null gereturned moeten worden
      */
     @Test
@@ -124,7 +124,7 @@ class QueueTest {
     @Test
     void remove() {
         assertEquals(10246, (int)queue.remove());
-        assertEquals(10246, (int)queue.remove());
+        assertEquals(10247, (int)queue.remove());
 
         queue.clear();
 

@@ -58,18 +58,23 @@ public class DoublyLinkedList<E> implements List<E>{
 
     @Override
     public void add(int index, E element) {
-        if (index == 0){
-            head = new Node(element, head, null);
-        } else if(index == size){
-            Node node = tail;
-            Node tempNode = new Node(element, null, node);
-            node.next = tempNode;
-            tail = tempNode;
+        if(index >= 0 || index <= size){
+            if (index == 0){
+                head = new Node(element, head, null);
+            } else if(index == size){
+                Node node = tail;
+                Node tempNode = new Node(element, null, node);
+                node.next = tempNode;
+                tail = tempNode;
+            } else {
+                Node node = getNode(index-1);
+                node.next = new Node(element, node.next, node);
+            }
+
+            size++;
         } else {
-            Node node = getNode(index-1);
-            node.next = new Node(element, node.next, node);
+            throw new IndexOutOfBoundsException();
         }
-        size++;
     }
 
     @Override
