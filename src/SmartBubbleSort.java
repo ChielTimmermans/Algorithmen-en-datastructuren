@@ -26,10 +26,20 @@ import java.util.Comparator;
  */
 public class SmartBubbleSort{
 	
+	/**
+	 * methode die een smart bubblesort aanroept op een collectie
+	 * @param 	arr		De collectie die moet worden gesorteerd
+	 * @return 			Een gesorteerde collectie
+	 */
 	public static <E extends Object, T extends Collection<E>> T smartBubbleSort(Collection<E> arr) {
 		return (T) new ArrayList<Object>(Arrays.asList(smartBubbleSort(arr.toArray())));
 	}
 
+	/**
+	 * methode die een smart Bubblesort uitvoert op een array
+	 * @param 	arr 	De array die moet worden gesorteerd
+	 * @return			Een gesorteerde array
+	 */
     public static <T extends Object> T[] smartBubbleSort(T[] arr){
         //lengte van Willekeurige Object type
         int n = arr.length;

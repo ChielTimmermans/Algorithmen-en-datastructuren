@@ -7,10 +7,12 @@ import java.util.Comparator;
  * Dit is de QuickSort class,
  *
  * Werking Algorithm:
- * Er wordt een willekeurig element in de rij gekozen, de spil.
- * De rij wordt zo gesorteerd zodat alles wat kleiner is links van de spil staat,
- * en alles wat groter is dan de spil links van de spil staat. Dit wordt partitioneren genoemd.
- * Hierna wordt op dezelfde manier links en rechts gesorteerd, dit wordt netzolang herhaalt totdat de reeks gesorteerd is
+ * Het pakt een willekeurig object (in ons geval de middelste).
+ * En vergelijkt het object met alle andere objecten in de lijst zodat
+ * uiteindelijk alle objecten kleiner dan het object links staan 
+ * en alle objecten groten dan het object rechts.
+ * En dan wordt het opnieuw uitgevoerd voor het linkse en het rechtse gedeelte 
+ * tot dat de hele lijst gesorteerd is.
  *
  *
  * @author  Michael van Dijk, Henk van Maanen, Frank Tieck, Chiel Timmermans
@@ -19,18 +21,40 @@ import java.util.Comparator;
 
 public class QuickSort {
 	
+	/**
+	 * methode die een quicksort aanroept op een collectie
+	 * @param 	arr		De collectie die moet worden gesorteerd
+	 * @return 			Een gesorteerde collectie
+	 */
 	public static <E extends Object, T extends Collection<E>> T quickSort(Collection<E> arr) {
 		Object[] temp = sort(arr.toArray(), 0, arr.size()-1);
 		return (T) new ArrayList<>(Arrays.asList(temp));
 	}
 	
+	/**
+	 * methode die een quicksort uitvoert op een array.
+	 * Deze methode maakt een call naar de recursive methode sort
+	 * @param 	arr 	De array die moet worden gesorteerd
+	 * @return			Een gesorteerde array
+	 */
 	public static <T extends Object> T[] quickSort(T[] arr) {
 		return sort(arr, 0, arr.length-1);		
 	}
 	
+	/**
+	 * methode die op een recursive manier een quicksort uitvoerd op een array.
+	 * 
+	 * @param arr 		De array die moet worden gesorteerd
+	 * @param links		Het meest linkse object van het gedeelte van de array die moet worden gesorteerd
+	 * @param rechts	Het meest rechtse object van het gedeelte van de array die moet worden gesorteerd
+	 * @return			Een gesorteerde array
+	 */
 	private static <T extends Object> T[] sort(T[] arr, int links, int rechts) {
+		//de index van het meest linkse en het meest rechtse object dat moet worden gesorteerd
 		int l = links;
 		int r = rechts;
+		
+		//De inhoud van het middenste object
 		T midden = arr[(links+rechts)/2];
 
         //hier wordt de Comparator gezet,
@@ -69,15 +93,19 @@ public class QuickSort {
             }
         };
         
+        //Een while loop dat alle objecten tussen links en rechts bij langs gaat
 		while(l<=r) {
 			
+			//Een while loop dat een index zoekt van een object dat links van midden staat maar wel groter is
 			while(com.compare(arr[l], midden) < 0) {
 				l++;
 			}
+			//Een while loop dat een index zoekt van een object dat rechts van midden staat maar wel kleiner is
 			while(com.compare(midden, arr[r]) < 0) {
 				r--;
 			}
 			
+			//als links nog links staat van rechts moeten de twee objecten op l en r worden gewisseld
 			if(l<=r) {
 				T temp = arr[l];
 				arr[l] = arr[r];
@@ -87,12 +115,16 @@ public class QuickSort {
 			}
 		}
 		
+		//zolang de orginele links kleiner is dan de nieuwe rechts moet de sort opnieuw worden uitgevoerd voor de linker kant
 		if(links < r) {
 			arr = sort(arr, links, r);
 		}
+		//zolang de orginele rechts groter is dan de nieuwe links moet de sort opnieuw worden uitgevoerd voor de rechter kant
 		if(l<rechts) {
 			arr = sort(arr, l, rechts);
 		}
+		
+		//een gesorteerde array word gereturned.
 		return arr;
 	}
 }

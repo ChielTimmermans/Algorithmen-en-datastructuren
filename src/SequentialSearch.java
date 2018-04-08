@@ -13,10 +13,9 @@ public class SequentialSearch {
     /**
      * De sequentialSearch krijgt een collectie binnen,
      * veranderd deze collectie naar een Object[] d.m.v. de toArray functie
-     * Daarna wordt er over de collectie heen geloopt.
-     * Op het moment dat het huidige obj gelijk staat aan de key dan wordt true gereturned
+     * Wordt er een call gedaan naar sequentialSearch
      *
-     * @param   col     collection wat gecheckt moet worden of het object er in zit
+     * @param   arr     collection wat gecheckt moet worden of het object er in zit
      * @param   key     het desbetrevende object
      * @return  int     0 of hoger. Het item is gevonden en de return is de index van dat item.
      *          int     -1. Het item is niet gevonden.
@@ -25,6 +24,17 @@ public class SequentialSearch {
         return sequentialSearch(arr.toArray(), key);
     }
 	
+	/**
+	 * Deze methode krijgt een array binnen en een object dat die moet zoeken.
+	 * Dan loopt het over de array heen tot dat het object is gevonden.
+	 * Als het object is gevonden returned het de index.
+	 * Als het object niet wordt gevonden returned het -1
+	 * 
+	 * @param   arr     collection wat gecheckt moet worden of het object er in zit
+     * @param   key     het desbetrevende object
+     * @return  int     0 of hoger. Het item is gevonden en de return is de index van dat item.
+     *          int     -1. Het item is niet gevonden.
+	 */
     public static <T extends Object> int sequentialSearch(T[] arr, Object key){
         for (int i = 0; i < arr.length; i++){
             if (arr[i].equals(key)){
