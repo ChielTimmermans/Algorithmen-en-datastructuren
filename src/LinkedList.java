@@ -2,8 +2,7 @@ import java.util.*;
 
 /**
  * Dit is de LinkedListTest class,
- * deze class is gebaseerd op het Last in First out principe
- * When a stack is first created, it contains no items.
+ * 
  *
  * @author  Michael van Dijk, Henk van Maanen, Frank Tieck, Chiel Timmermans
  * @version 05042018
@@ -11,12 +10,6 @@ import java.util.*;
 
 public class LinkedList<E> implements List<E> {
 
-    /**
-     * Node is identical to ListNode from the example, but parameterized with T
-     *
-     * @author downey
-     *
-     */
     private class Node {
         E data;
         Node next;
@@ -129,6 +122,9 @@ public class LinkedList<E> implements List<E> {
     public boolean addAll(int index, Collection<? extends E> collection) {
         if(collection == null){
             throw new NullPointerException();
+        }
+        if(index < 0 || index > size()){
+            throw new IndexOutOfBoundsException();
         }
         for(E element : collection){
             add(index++, element);
@@ -486,7 +482,18 @@ public class LinkedList<E> implements List<E> {
      */
     @Override
     public <T> T[] toArray(T[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length < size)
+            a = (T[])java.lang.reflect.Array.newInstance(
+                    a.getClass().getComponentType(), size);
+        int i = 0;
+        Object[] result = a;
+        for (Node node = head; node != null; node = node.next)
+            result[i++] = node.data;
+
+        if (a.length > size)
+            a[size] = null;
+
+        return a;
     }
 }
 

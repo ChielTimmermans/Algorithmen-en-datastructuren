@@ -34,7 +34,7 @@ class SequentialSearchTest {
     }
 
     /**
-     * Deze test kijkt of de functie contains goed functioneerd.
+     * Deze test kijkt of de functie contains goed functioneert.
      * Eerst wordt een object gezocht die in de dataset zit, dit zal de index moeten returnen, wat 0 is.
      * Daarna wordt een object gezocht die ook in de dataset zit, dit zal de index returnen, maar zal niet gelijk zijn aangezien de index anders is.
      * Tot slot wordt een object gezocht die niet in bestaat. Dit zal -1 returnen.

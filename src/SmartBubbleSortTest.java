@@ -34,7 +34,7 @@ class SmartBubbleSortTest {
     }
 
     /**
-    * Deze test kijkt of de functie smartBubbleSort goed functioneerd.
+    * Deze test kijkt of de functie smartBubbleSort goed functioneert.
     * Eerst wordt getest of de lijst gesort is, door middel van de isSorted functie, dit is niet waar en zal daarom false returnen.
     * Daarna wordt de list gesorteerd en wordt de isSorted functie aangeroepen, deze zal true moeten returnen als de lisjt gesort is.
     *

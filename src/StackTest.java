@@ -39,13 +39,13 @@ class StackTest {
     }
 
     /**
-     * Deze test kijkt of de functie empty goed functioneerd.
+     * Deze test kijkt of de functie empty goed functioneert.
      * Eerst wordt de empty() uitgevoerd over een stack die vol is met de dataset,
      * dit moet False returnen omdat er items in de stack zitten
      * Daarna wordt de stack compleet geleegd en wordt de functie empty() nog een keer uitgevoerd,
      * dit moet True returnen omdat er geen items meer in de stack zitten
      *
-     * In deze test wordt tegelijkertijd ook getest of de functie clear wel goed functioneerd
+     * In deze test wordt tegelijkertijd ook getest of de functie clear wel goed functioneert
      */
     @Test
     void empty() {
@@ -57,7 +57,7 @@ class StackTest {
     }
 
     /**
-     * Deze test kijkt of de functie push goed functioneerd.
+     * Deze test kijkt of de functie push goed functioneert.
      * Eerst wordt een item gepusth op de stack, als een item op de stack wordt gepusht dan returned de stack dat item.
      * Daarna wordt er een peek uitgevoerd op de stack om te kijken of het item daad werkelijk op de goede plek, index = 0, is beland.
      */
@@ -68,7 +68,7 @@ class StackTest {
     }
 
     /**
-     * Deze test kijkt of de functie pop goed functioneerd.
+     * Deze test kijkt of de functie pop goed functioneert.
      * pop returned de laatst toegevoegde item en verwijderd deze.
      * Deze functie wordt 2 keer getest om te testen of een item daad werkelijk wordt verwijderd.
      * Daarna wordt de stack gecleared om te check dat de stack ook een EmptyStackException geeft
@@ -86,7 +86,7 @@ class StackTest {
 
 
     /**
-     * Deze test kijkt of de functie peek goed functioneerd.
+     * Deze test kijkt of de functie peek goed functioneert.
      * peek returned de laatst toegevoegde item maar verwijderd deze niet.
      * Deze functie wordt 2 keer getest om te testen of de item blijft bestaan.
      * Daarna wordt de stack gecleared om te check dat de stack ook een EmptyStackException geeft
@@ -104,7 +104,7 @@ class StackTest {
     }
 
     /**
-     * Deze test kijkt of de functie search goed functioneerd.
+     * Deze test kijkt of de functie search goed functioneert.
      * search returned de index van een item geteld vanaf 1
      * Eerst wordt gezocht op item 798, in de dataset kun je zien dat dit item nummer 1 is, dit zal 1 moeten returnen.
      * daarna wordt gezocht op item "Object test", in de dataset is dit item niet te vinden, dit zal -1 moeten returnen.

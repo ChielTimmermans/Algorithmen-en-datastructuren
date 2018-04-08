@@ -1,8 +1,8 @@
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,7 +36,7 @@ class LinkedListTest {
     }
 
     /**
-     * Deze test kijkt of de functie add(E element) goed functioneerd.
+     * Deze test kijkt of de functie add(E element) goed functioneert.
      * Eerst wordt een item geadd aan de LinkedList, als een item op de LinkedList wordt geadd dan returned de stack true.
      * Daarna wordt de list verwijderd en wordt er opnieuw een item in gezet.
      * Dit laatste wordt gedaan zodat we ook testen of de add() een head aan kan maken als dienog niet bestaat
@@ -50,7 +50,7 @@ class LinkedListTest {
 
 
     /**
-     * Deze test kijkt of de functie add(int index, E element) goed functioneerd.
+     * Deze test kijkt of de functie add(int index, E element) goed functioneert.
      * Eerst wordt een item geadd aan de LinkedList, als een item op de LinkedList wordt geadd dan returned de stack true.
      * Daarna wordt de list verwijderd en wordt er opnieuw een item in gezet.
      * Dit laatste wordt gedaan zodat er ook getest wordt of de add() een head aan kan maken als die nog niet bestaat.
@@ -67,7 +67,7 @@ class LinkedListTest {
     }
 
     /**
-     * Deze test kijkt of de functie addAll(collection) goed functioneerd.
+     * Deze test kijkt of de functie addAll(collection) goed functioneert.
      * Eerst wordt een nieuwe dataset binnen gehaald.
      * Dit wordt daarna in de functie list.addall
      * Hierna wordt gecheckt of de dataset ook in de list zit met de functie containsAll
@@ -78,10 +78,13 @@ class LinkedListTest {
 
         assertEquals(true, list.addAll(temp2));
         assertTrue(list.containsAll(temp2));
+
+        assertThrows(NullPointerException.class, () -> list.addAll(null));
+
     }
 
     /**
-     * Deze test kijkt of de functie addAll(index, collection) goed functioneerd.
+     * Deze test kijkt of de functie addAll(index, collection) goed functioneert.
      * Eerst wordt een nieuwe dataset binnen gehaald.
      * Dit wordt daarna in de functie list.addall
      * Hierna wordt gecheckt of de dataset ook in de list zit met de functie containsAll
@@ -94,10 +97,16 @@ class LinkedListTest {
         assertEquals(true, list.addAll(4, temp2));
         assertTrue(list.containsAll(temp2));
         assertEquals(10246, (int) list.get(4));
+
+        assertThrows(NullPointerException.class, () -> list.addAll(5,null));
+
+
+        assertThrows(IndexOutOfBoundsException.class, () -> list.addAll(-4,temp2));
+
     }
 
     /**
-     * Deze test kijkt of de functie contains(Object o) goed functioneerd.
+     * Deze test kijkt of de functie contains(Object o) goed functioneert.
      *
      * eerst wordt gezocht naar een bestaand Object, dit zou true moeten returnen
      * Daarna wordt er gezocht naar een niet bestaand Object, dit zou False moeten returnen
@@ -109,7 +118,7 @@ class LinkedListTest {
     }
 
     /**
-     * Deze test kijkt of de functie containsAll(Collection c) goed functioneerd.
+     * Deze test kijkt of de functie containsAll(Collection c) goed functioneert.
      *
      * Eerst wordt dezelfde dataset als list opgehaald en vergeleken met elkaar,
      * dit moet True returnen
@@ -126,21 +135,27 @@ class LinkedListTest {
         temp2.add(2323);
 
         assertFalse(list.containsAll(temp2));
+
+        assertThrows(NullPointerException.class, () -> list.containsAll(null));
+
     }
 
     /**
-     * Deze test kijkt of de functie get(Int index) goed functioneerd.
+     * Deze test kijkt of de functie get(Int index) goed functioneert.
      *
      * get() vraagt het object op de locatie van index, dit zal in de dataset het eerste item zijn en dat is item 10246
      */
     @Test
     void get() {
         assertEquals(10246, (int) list.get(0));
+
         assertNotEquals(1024236, list.get(0));
+
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(-1));
     }
 
     /**
-     *  Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     *  Deze test kijkt of de functie indexOf(Object obj) goed functioneert.
      *  de test haalt een item op en checkt of dat de goede item is
      *  en daarna test hij een andere item om te kijken of niet elke indexOf het zelfde returned
      */
@@ -151,7 +166,10 @@ class LinkedListTest {
     }
 
     /**
-     * Deze test kijkt of de functie isEmpty() goed functioneerd.
+     * Deze test kijkt of de functie isEmpty() goed functioneert.
+     *
+     * Eerst wordt er gekeken of een volle list leeg is, dit zou False moeten returnen,
+     * daarna wordt de list leeg gemaakt en wordt er nog een keer gekeken of de list leeg is, dit zou True moeten returnen.
      */
     @Test
     void isEmpty() {
@@ -161,15 +179,18 @@ class LinkedListTest {
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie iterator() goed functioneert.
      */
     @Test
     void iterator() {
-        //assertEquals(, list.iterator());
+        //assertEquals(123, list.iterator());
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie lastIndexOf(Object obj) goed functioneert.
+     *
+     * Eerst wordt gekeken op welke index Object 10246 voor het laatst staat, dit zou 0 moeten zijn.
+     * Daarna wordt gekeken op welke index Object null staat, dit zou -1 moeten zijn omdat null geen object mag zijn.
      */
     @Test
     void lastIndexOf() {
@@ -178,66 +199,98 @@ class LinkedListTest {
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie listIterator goed functioneert.
      */
     @Test
     void listIterator() {
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie listIterator1() goed functioneert.
      */
     @Test
     void listIterator1() {
+        assertThrows(IndexOutOfBoundsException.class, () -> list.listIterator(-1));
+
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie remove(Object obj) goed functioneert.
+     *
+     * Eerst wordt Object 10247 verwijderd. dit zou true moeten returnen.
+     * Daarna wordt Object 10247 nog een keer verwijderd. dit zou dan false moeten returnen omdat Object 10247 niet meer bestaat.
+     *
      */
     @Test
     void remove() {
         assertTrue(list.remove((Object) 10247));
         assertFalse(list.remove((Object) 10247));
 
+    }
+
+    /**
+     * Deze test kijkt of de functie remove(int index) goed functioneert.
+     *
+     * Eerst wordt het object op de index van 0 verwijdert, dit returned het object terug wat 10246 zou moeten zijn.
+     * Daarna verwijderen we index 0 nog een keer om te kijken of hij daadwerkelijk verwijderd is, dit zou 10247 moeten returnen, dit komt omdat 10247 het volgende object is in de lijst.
+     *
+     * Tot slot wordt gekeken naar de Exception die de functie moet geven.
+     * Eerst wordt getest of de index boven het limit is van de list en daarna als er een index van -1 of lager wordt gegeven.
+     * Deze 2 testen zouden allebei een IndexOutOfBoundsException moetten geven.
+     */
+    @Test
+    void remove1() {
+        assertEquals(10246, (int)list.remove(0));
+        assertEquals(10247, (int)list.remove(0));
+
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(list.size() + 5));
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
-     */
-    @Test
-    void remove1() {
-        assertEquals(10247, (int)list.remove(1));
-        assertEquals(10246, (int)list.remove(0));
-    }
-
-    /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie removeAll(list) goed functioneert.
+     *
+     * Eerst wordt de lijst verwijderd met de functie removeAll.
+     * Daarna wordt er gekeken of er nog items over zijn.
+     * Omdat de lijst waarin de items staan die verwijderd moeten worden gelijk staat aan de lijst zelf zullen alle items verwijderd worden.
+     * Daarna wordt gekeken of de lijst daadwerkelijk leeg is door zijn size te checken.
      */
     @Test
     void removeAll() {
         assertTrue(list.removeAll(list));
         assertEquals(0, list.size());
+
+        assertThrows(NullPointerException.class, () -> list.removeAll(null));
+
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie retainAll() goed functioneert.
      */
     @Test
     void retainAll() {
+        assertThrows(NullPointerException.class, () -> list.retainAll(null));
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie set(int index, Object obj) goed functioneert.
+     *
+     * Eerst wordt het object 12345 geplaatst op index 5, dit returned de oude waarde van index 5 en dat zou 10582 moeten zijn.
+     * Daarna wordt het object 12346 geplaatst op index 5, dit zou nu de vorige object waarde moeten returnen en dat was 12345.
      */
     @Test
     void set() {
         assertEquals(10582, (int)list.set(5, 12345));
         assertEquals(12345, (int)list.set(5, 12346));
+
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(-1, 2398));
+
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie size() goed functioneert.
+     *
+     * de lijst wordt gecheckt op zijn lengte, dit zou 6035 moeten zijn.
      */
     @Test
     void size() {
@@ -245,24 +298,31 @@ class LinkedListTest {
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie subList() goed functioneert.
+     *
+     * eerst wordt er een sublist gemaakt van de list van index 1 tot 3,
+     * daarna wordt er een list gemaakt om dit te vergelijken.
+     *
+     * Tot slot wordt er gekeken of er een IndexOutOfBoundsException gegooid wordt als het minimum hoger is dan het maximum
      */
     @Test
     void subList() {
-        list.subList(0, 2);
+        List<Integer> sublist = list.subList(1, 3);
         LinkedList<Integer> list2 = new LinkedList<>();
-        list2.add(10246);
         list2.add(10247);
         list2.add(10248);
+        list2.add(10249);
         for(int i = 0; i > list2.size(); i++){
-            assertEquals(list2.get(i), list);
+            assertEquals(list2.get(i), sublist.get(i));
         }
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.subList(5, 2));
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie toArray() goed functioneert.
+     *
+     *
      */
     @Test
     void toArray() {
@@ -270,9 +330,21 @@ class LinkedListTest {
     }
 
     /**
-     * Deze test kijkt of de functie indexOf(Object obj) goed functioneerd.
+     * Deze test kijkt of de functie toArray(T[] a) goed functioneert.
+     *
+     * Eerst wordt de list omgezet naar een array, de array is een Integer array die 6 lang is
+     * Daarna wordt gekeken of elke value klopt.
+     *
      */
     @Test
     void toArray1() {
+        Integer array[] = list.toArray(new Integer[6]);
+        assertEquals(10246, (int)array[0]);
+        assertEquals(10247, (int)array[1]);
+        assertEquals(10248, (int)array[2]);
+        assertEquals(10249, (int)array[3]);
+        assertEquals(10581, (int)array[4]);
+        assertEquals(10582, (int)array[5]);
+
     }
 }

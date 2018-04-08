@@ -13,7 +13,7 @@ class DoublyLinkedListTest {
 
     @BeforeEach
     void setUp() {
-        list = new DoublyLinkedList<Integer>();
+        list = new DoublyLinkedList<>();
         path = "src/legosets.csv";
 
         ArrayList<Integer> temp = CSVreader.readCSV(path);

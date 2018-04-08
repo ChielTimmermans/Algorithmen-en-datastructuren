@@ -39,7 +39,7 @@ class QueueTest {
     }
 
     /**
-     * Deze test kijkt of de functie add goed functioneerd.
+     * Deze test kijkt of de functie add goed functioneert.
      * Eerst wordt een item geadd aan de queue, als een item op de queue wordt geadd dan returned de stack true.
      **/
     @Test
@@ -48,7 +48,7 @@ class QueueTest {
     }
 
     /**
-     * Deze test kijkt of de functie element goed functioneerd.
+     * Deze test kijkt of de functie element goed functioneert.
      *
      * Eerst vraagt de queue een element op met de functie element(),
      * dit returned het oudste element, maar verwijderd het element niet.
@@ -67,7 +67,7 @@ class QueueTest {
     }
 
     /**
-     * Deze test kijkt of de functie offer goed functioneerd.
+     * Deze test kijkt of de functie offer goed functioneert.
      * Eerst wordt een item geoffered aan de queue, als een item op de queue wordt geofferd dan returned de stack true anders false.
      **/
     @Test
@@ -76,7 +76,7 @@ class QueueTest {
     }
 
     /**
-     * Deze test kijkt of de functie peek goed functioneerd.
+     * Deze test kijkt of de functie peek goed functioneert.
      *
      * Eerst vraagt de queue een element op met de functie peek(),
      * dit returned het oudste element, maar verwijderd het element niet.
@@ -95,7 +95,7 @@ class QueueTest {
     }
 
     /**
-  e   * Deze test kijkt of de functie peek goed functioneerd.
+  e   * Deze test kijkt of de functie peek goed functioneert.
      *
      * Eerst vraagt de queue een element op met de functie poll(),
      * dit returned het oudste element en verwijderd het element.
@@ -113,7 +113,7 @@ class QueueTest {
     }
 
     /**
-     * Deze test kijkt of de functie remove goed functioneerd.
+     * Deze test kijkt of de functie remove goed functioneert.
      *
      * Eerst vraagt de queue een element op met de functie remove(),
      * dit returned het oudste element en verwijderd het element.
@@ -132,7 +132,7 @@ class QueueTest {
     }
 
     /**
-     * Deze test kijkt of de functie addAll goed functioneerd.
+     * Deze test kijkt of de functie addAll goed functioneert.
      *
      * Eerst haalt de functie een nieuwe dataset op,
      * daarna wordt deze dataset in de Queue, queue2, gezet met de functie addAll()

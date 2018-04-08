@@ -37,7 +37,7 @@ class QuickSortTest {
     }
 
     /**
-     * Deze test kijkt of de functie QuickSortTest goed functioneerd.
+     * Deze test kijkt of de functie QuickSortTest goed functioneert.
      *
      * Eerst wordt de ongesorteerde list gecheckt of hij gesorteerd is. Dit moet False returnen
      * Daarna wordt de list gesorteerd met het quicksort algorithm

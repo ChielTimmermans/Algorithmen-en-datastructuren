@@ -1,5 +1,13 @@
 import java.util.*;
 
+/**
+ * Dit is de LinkedListTest class,
+ * When a stack is first created, it contains no items.
+ *
+ * @author  Michael van Dijk, Henk van Maanen, Frank Tieck, Chiel Timmermans
+ * @version 05042018
+ */
+
 public class DoublyLinkedList<E> implements List<E>{
 
     private class Node {
@@ -271,7 +279,6 @@ public class DoublyLinkedList<E> implements List<E>{
         Object[] array = new Object[size];
         int i = 0;
         for (Node node=head; node != null; node = node.next) {
-            // System.out.println(node);
             array[i] = node.data;
             i++;
         }
