@@ -40,7 +40,7 @@ public class LinkedList<E> implements List<E> {
     }
 
     /**
-     * Appends the specified element to the end of this lis
+     * Appends the specified element to the end of this list
      *
      * @param   element     element to be appended to this list
      * @return  true
@@ -134,8 +134,6 @@ public class LinkedList<E> implements List<E> {
 
     /**
      * Removes all of the elements from this list. The list will be empty after this call returns.
-     *
-     *
      */
     @Override
     public void clear() {
@@ -214,7 +212,7 @@ public class LinkedList<E> implements List<E> {
      *
      * @param index index of the node to return
      * @return the element at the specified position in this list
-     * @trow IndexOutOfBoundsException( if the index is out of range
+     * @throw IndexOutOfBoundsException if the index is out of range
      */
     private Node getNode(int index) {
         if (index < 0 || index >= size) {
@@ -491,7 +489,7 @@ public class LinkedList<E> implements List<E> {
             result[i++] = node.data;
 
         if (a.length > size)
-            a[size] = null;
+        a[size] = null;
 
         return a;
     }
