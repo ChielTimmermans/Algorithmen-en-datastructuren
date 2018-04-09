@@ -312,7 +312,7 @@ class LinkedListTest {
         list2.add(10247);
         list2.add(10248);
         list2.add(10249);
-        for(int i = 0; i > list2.size(); i++){
+        for(int i = 0; i < list2.size(); i++){
             assertEquals(list2.get(i), sublist.get(i));
         }
 

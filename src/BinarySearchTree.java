@@ -11,6 +11,7 @@ public class BinarySearchTree<E> {
             this.data = data;
             this.left = this.right = this.parent = null;
         }
+
         
         Node(E data, Node p){
         	this.data = data;
@@ -22,6 +23,7 @@ public class BinarySearchTree<E> {
 
     Node root;
     Node current;
+    
     //hier wordt de COmparator gezet,
     //dit wordt gedaan op basis van de datatype van de items in de objecttype
     Comparator<E> com =new Comparator<E>() {
@@ -57,6 +59,7 @@ public class BinarySearchTree<E> {
             }
         }
     };
+
 
     BinarySearchTree(){
         root = null;

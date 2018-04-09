@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,14 +10,14 @@ class BinarySearchTreeTest {
 
     protected ArrayList<Integer> list;
     protected String path;
-    protected BinarySearchTree tree;
+    protected BinarySearchTree<Integer> tree;
 
     @BeforeEach
     void setUp() {
         path = "src/legosets.csv";
 
         list = CSVreader.readCSV(path);
-        tree = new BinarySearchTree();
+        tree = new BinarySearchTree<Integer>();
         tree.insertAll(list);
     }
 
@@ -42,7 +43,7 @@ class BinarySearchTreeTest {
     
     @Test
     void getRoot() {
-    	assertEquals(10246, tree.getRoot().data);
+    	assertTrue(10246 == tree.getRoot().data);
     }
     
     @Test
@@ -54,9 +55,9 @@ class BinarySearchTreeTest {
     
     @Test
     void getCurrent() {
-    	assertEquals(10246, tree.getCurrent());
+    	assertTrue(10246 == tree.getCurrent());
     	int i = (int) tree.getLeft();
-    	assertEquals(i, tree.getCurrent());
+    	assertTrue(i == tree.getCurrent());
     }
     
     @Test
@@ -108,7 +109,7 @@ class BinarySearchTreeTest {
     void getPrevious() {
     	assertEquals(null, tree.getPrevious());
     	tree.getLeft();
-    	assertEquals(10246, tree.getPrevious());
+    	assertTrue(10246 == tree.getPrevious());
     }
     
     @Test

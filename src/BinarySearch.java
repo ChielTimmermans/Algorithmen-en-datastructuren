@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.Comparator;
 
@@ -32,7 +32,7 @@ public class BinarySearch {
 	 * @return 	int     0 of hoger. Het item is gevonden en de return is de index van dat item.
      *          int     -1. Het item is niet gevonden.	
 	 */
-	public static <T extends Object> int binarySearch(Collection<?> arr, T key) {
+	public static <T> int binarySearch(Collection<?> arr, T key) {
 		return runBinarySearchIteratively(arr.toArray(), key);
 	}
 	
@@ -48,7 +48,7 @@ public class BinarySearch {
 	 * @return 	int     0 of hoger. Het item is gevonden en de return is de index van dat item.
      *          int     -1. Het item is niet gevonden.	
 	 */
-	public static <T extends Object> int binarySearch(T[] arr, T key) {
+	public static <T> int binarySearch(T[] arr, T key) {
 		return runBinarySearchIteratively(arr, key);
 	}
 	
@@ -70,7 +70,7 @@ public class BinarySearch {
 	 * @return	int     0 of hoger. Het item is gevonden en de return is de index van dat item.
      *          int     -1. Het item is niet gevonden.
 	 */
-    public static <T extends Object> int runBinarySearchRecursively(T[] arr, T key, int low, int high){
+    public static <T> int runBinarySearchRecursively(T[] arr, T key, int low, int high){
     	//controleerd of de array gesorteerd is zo niet sorteerd het de array
     	if(!isSorted(arr)) {
     		arr = QuickSort.quickSort(arr);
@@ -86,37 +86,34 @@ public class BinarySearch {
         
         //hier wordt de COmparator gezet,
         //dit wordt gedaan op basis van de datatype van de items in de objecttype
-        Comparator<T> com =new Comparator<T>() {
-            @Override
-            public int compare(T o1, T o2) {
-            /*
-             * checkt of o1 en o2 integers zijn,
-             * als dit waar is dan returned hij de vergelijking tussen o1 en o2
-             * de compareTo() functie returned -1, 0 of 1.
-             * -1 als o1 kleiner is dan o2
-             * 0 als o1 gelijk staat aan o2
-             * 1 als o1 groter is dan o2
-             *
-             * Dit geld ook voor de tweede en derde else statement.
-             * Alleen wordt bij de tweede gecheckt of de items Strings zijn,
-             * zo ja dan wordt het op alfabetische volgorde gesort.
-             *
-             * Bij de derde statement wordt alles gezet wat geen Integer of String is
-             * Hier wordt dan de toString functie over aangeroepen, dit wordt daarna vergeleken met elkaar
-             * Er is voor deze methode gekozen omdat het algorithm generic is en daarom op elke datatype moet werken.
-             * Daarnaast is hij ook makkelijk uitbreidbaar als je je eigen compare functie wil toevoegen
-             */
-            	if(o1 instanceof Integer && o2 instanceof Integer) {
-                	Integer i1 = (Integer)o1;
-                	Integer i2 = (Integer)o2;
-                	return i1.compareTo(i2);
-                } else if(o1 instanceof String && o2 instanceof String) {
-                	String s1 = (String)o1;
-                	String s2 = (String)o2;
-                	return s1.compareTo(s2);
-                } else {
-                	return o1.toString().compareTo(o2.toString());
-                }
+        Comparator<T> com = (o1, o2) -> {
+        /*
+         * checkt of o1 en o2 integers zijn,
+         * als dit waar is dan returned hij de vergelijking tussen o1 en o2
+         * de compareTo() functie returned -1, 0 of 1.
+         * -1 als o1 kleiner is dan o2
+         * 0 als o1 gelijk staat aan o2
+         * 1 als o1 groter is dan o2
+         *
+         * Dit geld ook voor de tweede en derde else statement.
+         * Alleen wordt bij de tweede gecheckt of de items Strings zijn,
+         * zo ja dan wordt het op alfabetische volgorde gesort.
+         *
+         * Bij de derde statement wordt alles gezet wat geen Integer of String is
+         * Hier wordt dan de toString functie over aangeroepen, dit wordt daarna vergeleken met elkaar
+         * Er is voor deze methode gekozen omdat het algorithm generic is en daarom op elke datatype moet werken.
+         * Daarnaast is hij ook makkelijk uitbreidbaar als je je eigen compare functie wil toevoegen
+         */
+            if(o1 instanceof Integer && o2 instanceof Integer) {
+                Integer i1 = (Integer)o1;
+                Integer i2 = (Integer)o2;
+                return i1.compareTo(i2);
+            } else if(o1 instanceof String && o2 instanceof String) {
+                String s1 = (String)o1;
+                String s2 = (String)o2;
+                return s1.compareTo(s2);
+            } else {
+                return o1.toString().compareTo(o2.toString());
             }
         };
         
@@ -152,7 +149,7 @@ public class BinarySearch {
      * @return	int     0 of hoger. Het item is gevonden en de return is de index van dat item.
      *          int     -1. Het item is niet gevonden.
      */
-    public static <T extends Object> int runBinarySearchIteratively(T[] arr, T key){
+    public static <T> int runBinarySearchIteratively(T[] arr, T key){
     	//controleerd of de array gesorteerd is zo niet sorteerd het de array
     	if(!isSorted(arr)) {
     		arr = QuickSort.quickSort(arr);
@@ -167,37 +164,34 @@ public class BinarySearch {
         
         //hier wordt de COmparator gezet,
         //dit wordt gedaan op basis van de datatype van de items in de objecttype
-        Comparator<T> com =new Comparator<T>() {
-            @Override
-            public int compare(T o1, T o2) {
-            /*
-             * checkt of o1 en o2 integers zijn,
-             * als dit waar is dan returned hij de vergelijking tussen o1 en o2
-             * de compareTo() functie returned -1, 0 of 1.
-             * -1 als o1 kleiner is dan o2
-             * 0 als o1 gelijk staat aan o2
-             * 1 als o1 groter is dan o2
-             *
-             * Dit geld ook voor de tweede en derde else statement.
-             * Alleen wordt bij de tweede gecheckt of de items Strings zijn,
-             * zo ja dan wordt het op alfabetische volgorde gesort.
-             *
-             * Bij de derde statement wordt alles gezet wat geen Integer of String is
-             * Hier wordt dan de toString functie over aangeroepen, dit wordt daarna vergeleken met elkaar
-             * Er is voor deze methode gekozen omdat het algorithm generic is en daarom op elke datatype moet werken.
-             * Daarnaast is hij ook makkelijk uitbreidbaar als je je eigen compare functie wil toevoegen
-             */
-            	if(o1 instanceof Integer && o2 instanceof Integer) {
-                	Integer i1 = (Integer)o1;
-                	Integer i2 = (Integer)o2;
-                	return i1.compareTo(i2);
-                } else if(o1 instanceof String && o2 instanceof String) {
-                	String s1 = (String)o1;
-                	String s2 = (String)o2;
-                	return s1.compareTo(s2);
-                } else {
-                	return o1.toString().compareTo(o2.toString());
-                }
+        Comparator<T> com = (o1, o2) -> {
+        /*
+         * checkt of o1 en o2 integers zijn,
+         * als dit waar is dan returned hij de vergelijking tussen o1 en o2
+         * de compareTo() functie returned -1, 0 of 1.
+         * -1 als o1 kleiner is dan o2
+         * 0 als o1 gelijk staat aan o2
+         * 1 als o1 groter is dan o2
+         *
+         * Dit geld ook voor de tweede en derde else statement.
+         * Alleen wordt bij de tweede gecheckt of de items Strings zijn,
+         * zo ja dan wordt het op alfabetische volgorde gesort.
+         *
+         * Bij de derde statement wordt alles gezet wat geen Integer of String is
+         * Hier wordt dan de toString functie over aangeroepen, dit wordt daarna vergeleken met elkaar
+         * Er is voor deze methode gekozen omdat het algorithm generic is en daarom op elke datatype moet werken.
+         * Daarnaast is hij ook makkelijk uitbreidbaar als je je eigen compare functie wil toevoegen
+         */
+            if(o1 instanceof Integer && o2 instanceof Integer) {
+                Integer i1 = (Integer)o1;
+                Integer i2 = (Integer)o2;
+                return i1.compareTo(i2);
+            } else if(o1 instanceof String && o2 instanceof String) {
+                String s1 = (String)o1;
+                String s2 = (String)o2;
+                return s1.compareTo(s2);
+            } else {
+                return o1.toString().compareTo(o2.toString());
             }
         };
         
@@ -229,47 +223,44 @@ public class BinarySearch {
      * @param 	arr		De array die gecontroleerd moet worden.
      * @return	boolean	True als de array gesorteerd is en False als de array niet gesorteerd is.	
      */
-    public static <T extends Object> boolean isSorted(T[] arr)
+    private static <T> boolean isSorted(T[] arr)
     {
     	//hier wordt de COmparator gezet,
         //dit wordt gedaan op basis van de datatype van de items in de objecttype
-        Comparator<T> com =new Comparator<T>() {
-            @Override
-            public int compare(T o1, T o2) {
-            /*
-             * checkt of o1 en o2 integers zijn,
-             * als dit waar is dan returned hij de vergelijking tussen o1 en o2
-             * de compareTo() functie returned -1, 0 of 1.
-             * -1 als o1 kleiner is dan o2
-             * 0 als o1 gelijk staat aan o2
-             * 1 als o1 groter is dan o2
-             *
-             * Dit geld ook voor de tweede en derde else statement.
-             * Alleen wordt bij de tweede gecheckt of de items Strings zijn,
-             * zo ja dan wordt het op alfabetische volgorde gesort.
-             *
-             * Bij de derde statement wordt alles gezet wat geen Integer of String is
-             * Hier wordt dan de toString functie over aangeroepen, dit wordt daarna vergeleken met elkaar
-             * Er is voor deze methode gekozen omdat het algorithm generic is en daarom op elke datatype moet werken.
-             * Daarnaast is hij ook makkelijk uitbreidbaar als je je eigen compare functie wil toevoegen
-             */
-            	if(o1 instanceof Integer && o2 instanceof Integer) {
-                	Integer i1 = (Integer)o1;
-                	Integer i2 = (Integer)o2;
-                	return i1.compareTo(i2);
-                } else if(o1 instanceof String && o2 instanceof String) {
-                	String s1 = (String)o1;
-                	String s2 = (String)o2;
-                	return s1.compareTo(s2);
-                } else {
-                	return o1.toString().compareTo(o2.toString());
-                }
+        Comparator<T> com = (o1, o2) -> {
+        /*
+         * checkt of o1 en o2 integers zijn,
+         * als dit waar is dan returned hij de vergelijking tussen o1 en o2
+         * de compareTo() functie returned -1, 0 of 1.
+         * -1 als o1 kleiner is dan o2
+         * 0 als o1 gelijk staat aan o2
+         * 1 als o1 groter is dan o2
+         *
+         * Dit geld ook voor de tweede en derde else statement.
+         * Alleen wordt bij de tweede gecheckt of de items Strings zijn,
+         * zo ja dan wordt het op alfabetische volgorde gesort.
+         *
+         * Bij de derde statement wordt alles gezet wat geen Integer of String is
+         * Hier wordt dan de toString functie over aangeroepen, dit wordt daarna vergeleken met elkaar
+         * Er is voor deze methode gekozen omdat het algorithm generic is en daarom op elke datatype moet werken.
+         * Daarnaast is hij ook makkelijk uitbreidbaar als je je eigen compare functie wil toevoegen
+         */
+            if(o1 instanceof Integer && o2 instanceof Integer) {
+                Integer i1 = (Integer)o1;
+                Integer i2 = (Integer)o2;
+                return i1.compareTo(i2);
+            } else if(o1 instanceof String && o2 instanceof String) {
+                String s1 = (String)o1;
+                String s2 = (String)o2;
+                return s1.compareTo(s2);
+            } else {
+                return o1.toString().compareTo(o2.toString());
             }
         };
         
-        //Een for loop één keer over de hele array loopt 
+        //Een for loop ï¿½ï¿½n keer over de hele array loopt 
         for (int i = 1; i < arr.length; i++) {
-        	//als het één keer voor komt dat het vorige object groter is dan het huidige object
+        	//als het ï¿½ï¿½n keer voor komt dat het vorige object groter is dan het huidige object
         	//is de lijst niet gesorteerd en returned de methode false
             if (com.compare(arr[i-1], arr[i]) > 0) return false;
         }
