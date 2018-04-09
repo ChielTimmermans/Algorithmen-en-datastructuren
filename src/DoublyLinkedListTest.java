@@ -153,7 +153,7 @@ class DoublyLinkedListTest {
      */
     @Test
     void indexOf() {
-        assertEquals(53, list.indexOf(21022);
+        assertEquals(53, list.indexOf(21022));
         assertNotEquals(53, list.indexOf(10246));
     }
 
