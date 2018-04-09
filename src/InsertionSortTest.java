@@ -23,7 +23,7 @@ class InsertionSortTest {
         assertTrue(isSorted());
     }
 
-    public boolean isSorted()
+    private boolean isSorted()
     {
         boolean sorted = true;
         for (int i = 1; i < list.size(); i++) {

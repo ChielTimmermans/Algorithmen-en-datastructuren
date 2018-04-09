@@ -292,8 +292,8 @@ class DoublyLinkedListTest {
         list2.add(10246);
         list2.add(10247);
         list2.add(10248);
-        for(int i = 0; i > list2.size(); i++){
-            assertEquals(list2.get(i), list);
+        for(int i = 0; i < list2.size(); i++){
+            assertEquals(list2.get(i), list.get(i));
         }
 
         assertThrows(IndexOutOfBoundsException.class, () -> list.subList(5, 2));

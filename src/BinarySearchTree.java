@@ -5,19 +5,19 @@ public class BinarySearchTree {
         int key;
         Node left, right;
 
-        public Node(int item){
+        Node(int item){
             key = item;
             left = right = null;
         }
     }
 
-    Node root;
+    private Node root;
 
     BinarySearchTree(){
         root = null;
     }
 
-    void insert(int key){
+    private void insert(int key){
         root = insertRec(root, key);
     }
 
@@ -27,7 +27,7 @@ public class BinarySearchTree {
         }
     }
 
-    Node insertRec(Node root, int key){
+    private Node insertRec(Node root, int key){
         if (root == null) {
             root = new Node(key);
             return root;
@@ -46,7 +46,7 @@ public class BinarySearchTree {
         inorderRec(root);
     }
 
-    void inorderRec(Node root){
+    private void inorderRec(Node root){
         if (root != null){
             inorderRec(root.left);
             System.out.println(root.key);

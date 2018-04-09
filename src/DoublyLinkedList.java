@@ -11,17 +11,17 @@ import java.util.*;
 public class DoublyLinkedList<E> implements List<E>{
 
     private class Node {
-        public E data;
-        public Node next;
-        public Node previous;
+        E data;
+        Node next;
+        Node previous;
 
-        public Node(E data) {
+        Node(E data) {
             this.data = data;
             this.next = null;
             this.previous = null;
         }
         @SuppressWarnings("unused")
-        public Node(E data, Node next, Node previous) {
+        Node(E data, Node next, Node previous) {
             this.data = data;
             this.next = next;
             this.previous = previous;
@@ -40,7 +40,7 @@ public class DoublyLinkedList<E> implements List<E>{
     /**
      *
      */
-    public DoublyLinkedList() {
+    DoublyLinkedList() {
         head = null;
         tail = null;
         size = 0;
@@ -458,7 +458,7 @@ public class DoublyLinkedList<E> implements List<E>{
         }
 
         int i = 0;
-        LinkedList<E> list = new LinkedList<E>();
+        LinkedList<E> list = new LinkedList<>();
         for (Node node=head; node != null; node = node.next) {
             if (i >= fromIndex && i <= toIndex) {
                 list.add(node.data);
